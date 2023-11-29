@@ -1,11 +1,11 @@
 <template>
     <div class="">
-        <Header></Header>
+        <SideBar></SideBar>
     </div>
 </template>
 
 <script>
-import Header from '../../components/Header/HeaderPage.vue'
+import SideBar from '../../components/Sidebar/SideBar.vue'
 
 import { defineComponent } from 'vue';
 
@@ -18,7 +18,7 @@ export default defineComponent({
             user: {}
         };
     },
-    components: { Header },
+    components: { SideBar },
     methods: {
         fetchData() {
             this.user = {};

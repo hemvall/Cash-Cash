@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import Header from '../../components/Header/HeaderPage.vue'
+import Header from '../../components/AssistantDashboardBottom/AssistantDashboardBottom.vue'
 
 import { defineComponent } from 'vue';
 
@@ -24,13 +24,13 @@ export default defineComponent({
             this.user = {};
             this.loading = true;
 
-            fetch(`${this.$api}/users/${localStorage.getItem('userId')}`)
-                .then(r => r.json())
-                .then(json => {
-                    this.user = json;
-                    this.loading = false;
-                    return;
-                });
+            // fetch(`${this.$api}/users/${localStorage.getItem('userId')}`)
+            //     .then(r => r.json())
+            //     .then(json => {
+            //         this.user = json;
+            //         this.loading = false;
+            //         return;
+            //     });
         }
     },
 });

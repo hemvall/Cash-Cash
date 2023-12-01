@@ -2,12 +2,12 @@
     <div class="container">
         <div class="logo"><img style="height: 200px" src="../../assets/logo.png" /></div>
         <div class="labelContainer">
-            <a class="label"><img class="icon" src="../../assets/logo.png" />Tableau de bord</a><br><br><br>
-            <a class="label"><img class="icon" src="../../assets/logo.png" />Interventions</a><br><br><br>
-            <a class="label"><img class="icon" src="../../assets/logo.png" />Contrats</a><br><br><br>
-            <a class="label"><img class="icon" src="../../assets/logo.png" />Réglages</a><br><br><br>
-            <a class="label"><img class="icon" src="../../assets/logo.png" />Techniciens</a><br><br><br>
-            <a class="label"><img class="icon" src="../../assets/logo.png" />Clients</a>
+            <a class="label"><img class="icon" src="../../assets/Icons/dashboard.png" />Tableau de bord</a><br><br><br>
+            <a class="label"><img class="icon" src="../../assets/Icons/clients.png" />Clients</a><br><br><br>
+            <a class="label"><img class="icon" src="../../assets/Icons/technicien.png" />Techniciens</a><br><br><br>
+            <a class="label"><img class="icon" src="../../assets/Icons/reglages.png" />Interventions</a><br><br><br>
+            <a class="label"><img class="icon" src="../../assets/Icons/contrat.png" />Contrats</a><br><br><br>
+            <a class="label"><img class="icon" src="../../assets/Icons/reglages.png" />Réglages</a>
         </div>
     </div>
 </template>
@@ -57,8 +57,10 @@ li {
 }
 
 .icon {
-    height: 20px;
+    height: 30px;
     position: relative;
+    align-items: center;
+    justify-content: center;
     left: 0;
     margin: 0 2%;
     margin-right: 3%;

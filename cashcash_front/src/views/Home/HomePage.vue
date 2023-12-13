@@ -7,12 +7,14 @@
         <div class="wholePage">
             <SearchBar></SearchBar>
             <AssistantDashboardTop></AssistantDashboardTop>
+            <AssistantDashboardBottom></AssistantDashboardBottom>
         </div>
 </template>
 
 <script>
 import SideBar from '../../components/Sidebar/SideBar.vue';
 import AssistantDashboardTop from '../../components/AssistantDashboardTop/AssistantDashboardTop.vue';
+import AssistantDashboardBottom from '../../components/AssistantDashboardBottom/AssistantDashboardBottom.vue';
 import SearchBar from '../../components/Searchbar/SearchBar.vue';
 import { defineComponent } from 'vue';
 
@@ -23,12 +25,14 @@ export default defineComponent({
             user: {}
         };
     },
-    components: { SideBar, AssistantDashboardTop, SearchBar }
+    components: { SideBar, AssistantDashboardTop,AssistantDashboardBottom, SearchBar }
 });
 </script>
 
 <style scoped>
 .wholePage{
     margin-left: 20%;
+    height: 100%;
+    background-color: aqua;
 }
 </style>

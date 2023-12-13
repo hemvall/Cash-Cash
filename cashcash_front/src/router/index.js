@@ -8,6 +8,20 @@ const routes = [
       return import( '../views/Home/HomePage.vue')
     }
   },
+  {
+    path: '/technicien/:userId/interventions',
+    name: 'technicienInterventions',
+    component: function () {
+      return import( '../views/Technicien/Interventions/InterventionsPage.vue')
+    }
+  },
+  {
+    path: '/interventions',
+    name: 'interventions',
+    component: function () {
+      return import( '../views/Assistant/Interventions/InterventionsPage.vue')
+    }
+  },
 ]
 
 const router = createRouter({

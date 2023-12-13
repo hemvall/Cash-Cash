@@ -1,13 +1,15 @@
 <template>
     <div class="container">
-        <div class="logo"><img style="height: 200px" src="../../assets/logo.png" /></div>
+        <div class="logo" @click="$router.push('/')"><img style="height: 200px" src="../../assets/logo.png" /></div>
         <div class="labelContainer">
-            <a class="label"><img class="icon" src="../../assets/Icons/dashboard.png" />Tableau de bord</a><br><br><br>
+            <a class="label" @click="$router.push('/')"><img class="icon" src="../../assets/Icons/dashboard.png" />Tableau de bord</a><br><br><br>
             <a class="label"><img class="icon" src="../../assets/Icons/clients.png" />Clients</a><br><br><br>
             <a class="label"><img class="icon" src="../../assets/Icons/technicien.png" />Techniciens</a><br><br><br>
-            <a class="label"><img class="icon" src="../../assets/Icons/reglages.png" />Interventions</a><br><br><br>
+            <a class="label" @click="$router.push('/interventions')"><img class="icon" src="../../assets/Icons/reglages.png" />Interventions</a><br><br><br>
             <a class="label"><img class="icon" src="../../assets/Icons/contrat.png" />Contrats</a><br><br><br>
-            <a class="label"><img class="icon" src="../../assets/Icons/reglages.png" />Réglages</a>
+            <a class="label"><img class="icon" src="../../assets/Icons/reglages.png" />Réglages</a><br><br><br>
+            <!-- add Condition if user connected == technicien -->
+            <a class="label" @click="$router.push('/technicien/1/interventions')"><img class="icon" src="../../assets/Icons/reglages.png" />Mes Interventions</a><br><br><br>
         </div>
     </div>
 </template>
@@ -18,7 +20,7 @@
 .container {
     height: 100%;
     width: 20%;
-    position: absolute;
+    position: fixed;
     top: 0;
     bottom: 0;
     left: 0;
@@ -44,17 +46,16 @@ li {
     color: white;
     font-weight: 600;
     font-size: 22px;
-    margin-top: 5%;
     transition: .3s ease-in-out;
     cursor: pointer;
-    padding: 4% 7% 4% 3%;
-    margin: 5% 0;
+    display: flex;
     border-radius: 20px;
 }
 
-.label:hover {
+/* .label:hover {
+    
     background-color: #191919;
-}
+} */
 
 .icon {
     height: 30px;

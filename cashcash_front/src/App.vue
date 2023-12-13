@@ -10,6 +10,8 @@
 // smokeGrey : #D9D9D9
 // lightGrey : #EFF0F1
 */
+@import url('./assets/scss/_main.scss');
+
 * {
   font-family: 'Source Code Pro';
 }

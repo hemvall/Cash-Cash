@@ -10,14 +10,14 @@
             <div class="Cards">
             <!-- <p class="number">15</p>
             <p>Interventions planifiées</p> -->
-                <a class="number">15</a><br>
+                <a class="number">{{ interventionsPlanifiees.length }}</a><br>
                 <a class="cardLabel">Interventions planifiées</a>
             
             </div>
         
         
             <div class="Cards">
-                <a class="number">15</a><br>
+                <a class="number">{{ interventionsTerminees.length }}</a><br>
                 <a class="cardLabel">Interventions terminées</a>           
             </div>
         
@@ -27,7 +27,42 @@
 
 </template>
 
-<script></script>
+<script>
+import { defineComponent } from 'vue';
+
+export default defineComponent({
+
+    data() {
+        return {
+            interventions: [],
+        };
+    },
+    components: {},
+    created() { this.fetchData() },
+    methods: {
+        fetchData() {
+            this.interventions = [];
+            this.loading = true;
+
+            fetch(`${this.$api}/Intervention`)
+                .then(r => r.json())
+                .then(json => {
+                    this.interventions = json;
+                    this.loading = false;
+                    return;
+                });
+        },
+        interventionsPlanifiees() {
+            return this.interventions;
+        }, 
+        interventionsTerminees() {
+            return this.interventions.filter(p => p.etat == "Terminé");
+        }, 
+    },
+    computed:{
+
+    }
+});</script>
 
 <style scoped>
 

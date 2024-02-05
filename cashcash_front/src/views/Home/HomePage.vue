@@ -16,6 +16,7 @@ import SideBar from '../../components/Sidebar/SideBar.vue';
 import AssistantDashboardTop from '../../components/AssistantDashboardTop/AssistantDashboardTop.vue';
 import AssistantDashboardBottom from '../../components/AssistantDashboardBottom/AssistantDashboardBottom.vue';
 import SearchBar from '../../components/Searchbar/SearchBar.vue';
+import Contrat from '../../components/Contrats/Contrat.vue';
 import { defineComponent } from 'vue';
 
 export default defineComponent({

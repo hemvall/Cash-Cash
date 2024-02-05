@@ -40,14 +40,29 @@ export default defineComponent({
 
     data() {
         return {
-            address: '57 rue des peupliers',
-            placeName: 'Auchan Leers',
-            date: 'Aujourdhui',
-            distance: '15 km',
-            interventionOpen: false
+            interventions: [],
+            interventionOpen: false,
         };
     },
-    components: {}
+    components: {},
+    created() { this.fetchData() },
+    methods: {
+        fetchData() {
+            this.interventions = [];
+            this.loading = true;
+
+            fetch(`${this.$api}/Intervention`)
+                .then(r => r.json())
+                .then(json => {
+                    this.interventions = json;
+                    this.loading = false;
+                    return;
+                });
+        },
+        interventionsFromTechnicien(iId) {
+            return this.interventions.filter(p => p.techId == iId)
+        }
+    }
 });
 </script>
 

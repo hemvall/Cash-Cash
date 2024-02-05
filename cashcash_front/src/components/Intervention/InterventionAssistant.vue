@@ -1,11 +1,11 @@
 <template>
-    <div class="interventionContainer">
+    <div class="interventionContainer" v-for="i in interventions" :key="i.id">
         <div class="intervention">
             <div class="left contentBlock">
                 <div style="display: flex; align-items: center; font-size: 15px;">
-                    <h1>Réparation de chaudière</h1><a class="technicienLabel">Antoine BLANQUAERT</a>
+                    <h1>{{i.commentaire}}</h1><a class="technicienLabel">Antoine BLANQUAERT</a>
                 </div>
-                <p>57 rue des peupliers - 15 km - aujourd'hui - Auchan</p>
+                <p>57 rue des peupliers - 15 km - {{ i.dateIntervention }} - Auchan</p>
             </div>
             <div class="right contentBlock df">
                 <a class="roundButton df"><img src="../../assets/Icons/download.svg" /></a>

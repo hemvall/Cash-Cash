@@ -5,7 +5,7 @@
                 <div style="display: flex; align-items: center; font-size: 15px;">
                     <h1>{{i.commentaire}}</h1><a class="technicienLabel">Antoine BLANQUAERT</a>
                 </div>
-                <p>57 rue des peupliers - 15 km - {{ i.dateIntervention }} - Auchan</p>
+                <p>57 rue des peupliers - 15 km - {{ i.dateIntervention }} - Auchangi </p>
             </div>
             <div class="right contentBlock df">
                 <a class="roundButton df"><img src="../../assets/Icons/download.svg" /></a>

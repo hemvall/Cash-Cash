@@ -32,10 +32,6 @@ export default defineComponent({
     data() {
         return {
             interventions: [],
-            address: '57 rue des peupliers',
-            placeName: 'Auchan Leers',
-            date: 'Aujourdhui',
-            distance: '15 km',
             commentOpen: false,
             timeOpen: false,
         };

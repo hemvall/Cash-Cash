@@ -3,7 +3,7 @@
         <div class="logo" @click="$router.push('/')"><img style="height: 200px" src="../../assets/logo.png" /></div>
         <div class="labelContainer">
             <a class="label" @click="$router.push('/')"><img class="icon" src="../../assets/Icons/dashboard.png" />Tableau de bord</a><br><br><br>
-            <a class="label"><img class="icon" src="../../assets/Icons/clients.png" />Clients</a><br><br><br>
+            <a class="label" @click="$router.push('/Clients')"><img class="icon" src="../../assets/Icons/clients.png" />Clients</a><br><br><br>
             <a class="label"><img class="icon" src="../../assets/Icons/technicien.png" />Techniciens</a><br><br><br>
             <a class="label" @click="$router.push('/interventions')"><img class="icon" src="../../assets/Icons/reglages.png" />Interventions</a><br><br><br>
             <a class="label"><img class="icon" src="../../assets/Icons/contrat.png" />Contrats</a><br><br><br>

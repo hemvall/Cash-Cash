@@ -33,6 +33,6 @@ export default defineComponent({
 .wholePage{
     margin-left: 20%;
     height: 100%;
-    background-color: aqua;
+    /* background-color: aqua; */
 }
 </style>

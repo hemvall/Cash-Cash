@@ -22,6 +22,13 @@ const routes = [
       return import( '../views/Assistant/Interventions/InterventionsPage.vue')
     }
   },
+  {
+    path:'/Clients',
+    name: 'clients',
+    component: function (){
+      return import('../views/Client/Client.vue')
+    }
+  }
 ]
 
 const router = createRouter({

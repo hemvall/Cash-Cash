@@ -12,5 +12,6 @@ namespace CashCash.Models
         public int TechId { get; set; }
         public DateTime DateIntervention { get; set; }
         public string? Commentaire { get; set; }
+        public string? Etat { get; set; }
     }
 }

@@ -4,29 +4,29 @@
         <h2 class="title"> <img height="50px" style="margin-right: 1%;" src="../../assets/Icons/wave-hand.png" /><strong>Bonjour Louis, </strong></h2>
         <div class="layer">
             <div class="block">
-                <div class="left contentBlock"><img height="125px" src="../../assets/Icons/technicien.png" /></div>
+                <div class="left contentBlock"><img class="ico" src="../../assets/Icons/technicien.png" /></div>
                 <div class="right contentBlock">
                     <div>
                         <h2>Techniciens</h2>
-                        <h1>24</h1>
+                        <h1>{{ techniciens.length }}</h1>
                     </div>
                 </div>
             </div>
             <div class="block">
-                <div class="left contentBlock"><img height="125px" src="../../assets/Icons/assistant.webp" /></div>
+                <div class="left contentBlock"><img class="ico" src="../../assets/Icons/assistant.webp" /></div>
                 <div class="right contentBlock">
                     <div>
                         <h2>Assistants</h2>
-                        <h1>37</h1>
+                        <h1>0</h1>
                     </div>
                 </div>
             </div>
             <div class="block">
-                <div class="left contentBlock"><img height="125px" src="../../assets/Icons/contrat.png" /></div>
+                <div class="left contentBlock"><img class="ico" src="../../assets/Icons/contrat.png" /></div>
                 <div class="right contentBlock">
                     <div>
                         <h2>Contrats</h2>
-                        <h1>4</h1>
+                        <h1>{{ contrats.length }}</h1>
                     </div>
                 </div>
             </div>
@@ -41,14 +41,20 @@ export default defineComponent({
 
     data() {
         return {
+            interventions: [],
             techniciens: [],
+            contrats: [],
+            // users: [],
         };
     },
     components: {},
     created() { this.fetchData() },
     methods: {
         fetchData() {
+            this.interventions = [];
             this.techniciens = [];
+            this.contrats = [];
+            // this.users = [];
             this.loading = true;
 
             fetch(`${this.$api}/Technicien`)
@@ -59,10 +65,35 @@ export default defineComponent({
                     return;
                 });
 
+            fetch(`${this.$api}/Intervention`)
+                .then(r => r.json())
+                .then(json => {
+                    this.interventions = json;
+                    this.loading = false;
+                    return;
+                });
+
+            fetch(`${this.$api}/Contrat`)
+                .then(r => r.json())
+                .then(json => {
+                    this.contrats = json;
+                    this.loading = false;
+                    return;
+                });
+
+            // fetch(`${this.$api}/users`)
+            //     .then(r => r.json())
+            //     .then(json => {
+            //         this.users = json;
+            //         this.loading = false;
+            //         return;
+            //     });
+
         },
         interventionsFromTechnicien(iId) {
             return this.interventions.filter(p => p.techId == iId)
         },
+
     }
 });
 </script>
@@ -96,6 +127,14 @@ export default defineComponent({
     border-radius: 15px;
     padding: 1%;
     background-color: #EFF0F1;
+}
+
+.ico {
+    height:125px
+}
+
+img {
+    height: 60px;
 }
 
 .left,

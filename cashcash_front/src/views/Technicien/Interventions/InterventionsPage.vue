@@ -5,8 +5,6 @@
             <SearchBar></SearchBar>
             <div style="margin-top: 4%;">
                 <Intervention></Intervention>
-                <Intervention></Intervention>
-                <Intervention></Intervention>
             </div>
         </div>
 </template>
@@ -22,7 +20,8 @@ export default defineComponent({
 
     data() {
         return {
-            user: {}
+            user: {},
+            interventions: []
         };
     },
     components: { SideBar, Intervention, SearchBar }

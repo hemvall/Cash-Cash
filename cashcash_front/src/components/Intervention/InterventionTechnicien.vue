@@ -1,14 +1,16 @@
 <template>
-    <div class="interventionContainer">
+    <div class="interventionContainer" v-for="i in interventions" :key="i.id">
         <div class="intervention">
             <div class="left contentBlock">
-                <h1>Réparation de chaudière {{ time }}</h1>
-                <p>57 rue des peupliers - 15 km - aujourd'hui - Auchan</p>
+                <h1>{{i.commentaire}}</h1>
+                <p>57 rue des peupliers - 15 km - {{i.dateIntervention}} - Auchan</p>
             </div>
             <div class="right contentBlock df">
                 <!-- <a class="roundButton df"><img src="../../assets/Icons/edit.svg" /></a> -->
-                <a class="roundButton df" @click="commentOpen = !commentOpen; timeOpen=false;"><img src="../../assets/Icons/comment.svg" /></a>
-                <a class="roundButton df" @click="timeOpen = !timeOpen;commentOpen=false;"><img src="../../assets/Icons/hourglass.svg" /></a>
+                <a class="roundButton df" @click="commentOpen = !commentOpen; timeOpen = false;"><img
+                        src="../../assets/Icons/comment.svg" /></a>
+                <a class="roundButton df" @click="timeOpen = !timeOpen; commentOpen = false;"><img
+                        src="../../assets/Icons/hourglass.svg" /></a>
             </div>
         </div>
         <div v-if="commentOpen">
@@ -29,16 +31,34 @@ export default defineComponent({
 
     data() {
         return {
+            interventions: [],
             address: '57 rue des peupliers',
             placeName: 'Auchan Leers',
             date: 'Aujourdhui',
             distance: '15 km',
             commentOpen: false,
             timeOpen: false,
-            time: null
         };
     },
-    components: {}
+    components: {},
+    created() { this.fetchData() },
+    methods: {
+        fetchData() {
+            this.interventions = [];
+            this.loading = true;
+
+            fetch(`https://localhost:7000/Intervention`)
+                .then(r => r.json())
+                .then(json => {
+                    this.interventions = json;
+                    this.loading = false;
+                    return;
+                });
+        },
+        interventionsFromTechnicien(iId) {
+            return this.interventions.filter(p => p.techId == iId)
+        }
+    }
 });
 </script>
 

@@ -18,8 +18,7 @@
         
             <div class="Cards">
                 <a class="number">15</a><br>
-                <a class="cardLabel">Interventions terminées</a>
-            
+                <a class="cardLabel">Interventions terminées</a>           
             </div>
         
         </div>

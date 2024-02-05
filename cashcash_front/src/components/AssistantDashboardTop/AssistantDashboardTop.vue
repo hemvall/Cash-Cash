@@ -34,7 +34,38 @@
     </div>
 </template>
 
-<script></script>
+<script>
+import { defineComponent } from 'vue';
+
+export default defineComponent({
+
+    data() {
+        return {
+            techniciens: [],
+        };
+    },
+    components: {},
+    created() { this.fetchData() },
+    methods: {
+        fetchData() {
+            this.techniciens = [];
+            this.loading = true;
+
+            fetch(`${this.$api}/Technicien`)
+                .then(r => r.json())
+                .then(json => {
+                    this.techniciens = json;
+                    this.loading = false;
+                    return;
+                });
+
+        },
+        interventionsFromTechnicien(iId) {
+            return this.interventions.filter(p => p.techId == iId)
+        },
+    }
+});
+</script>
 
 <style scoped>
 .dashboardTop {

@@ -22,6 +22,13 @@ const routes = [
       return import( '../views/Assistant/Interventions/InterventionsPage.vue')
     }
   },
+  {
+    path: '/techniciens',
+    name: 'techniciens',
+    component: function () {
+      return import( '../views/Technicien/TechniciensPage.vue')
+    }
+  },
 ]
 
 const router = createRouter({

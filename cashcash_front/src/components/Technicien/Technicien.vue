@@ -1,9 +1,9 @@
 <template>
-    <div class="interventionContainer">
+    <div class="interventionContainer" v-for="t in techniciens" :key="t.id">
         <div class="intervention">
             <div class="left contentBlock">
-                <div style="display: flex; align-items: center; font-size: 15px;">
-                    <h1>Antoine Blanquaert</h1><a class="technicienLabel">Agence de Lille</a>
+                <div style="display: flex; align-items: center; font-size: 18px;">
+                    <h1>{{ t.nom }}</h1> <p style="font-size: 22px; margin-left: 2%;">- {{ t.qualification }}</p><a class="technicienLabel" v-for="a in agencesFromTech(t.agenceId)" :key="a.id">{{a.nom}}</a>
                 </div>
             </div>
             <div class="right contentBlock df">
@@ -29,14 +29,42 @@ export default defineComponent({
 
     data() {
         return {
-            address: '57 rue des peupliers',
-            placeName: 'Auchan Leers',
-            date: 'Aujourdhui',
-            distance: '15 km',
-            EditOpen: false
+            EditOpen: false,
+            techniciens: [],
+            agences: [],
         };
     },
-    components: {}
+    components: {},
+    created() { this.fetchData() },
+    methods: {
+        fetchData() {
+            this.techniciens = [];
+            this.agences = [];
+            this.loading = true;
+
+            fetch(`${this.$api}/Technicien`)
+                .then(r => r.json())
+                .then(json => {
+                    this.techniciens = json;
+                    this.loading = false;
+                    return;
+                });
+            fetch(`${this.$api}/Agence`)
+
+                .then(r => r.json())
+                .then(json => {
+                    this.agences = json;
+                    this.loading = false;
+                    return;
+                });
+        },
+        interventionsFromTechnicien(iId) {
+            return this.interventions.filter(p => p.techId == iId)
+        },
+        agencesFromTech(aId) {
+            return this.agences.filter(p => p.agenceId == aId)
+        }
+    }
 });
 </script>
 

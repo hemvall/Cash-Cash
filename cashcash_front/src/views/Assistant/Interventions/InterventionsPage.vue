@@ -6,8 +6,6 @@
         <div style="margin-top: 2%;">
             <AddButton @click="addIntervention"></AddButton>
             <Intervention></Intervention>
-            <Intervention></Intervention>
-            <Intervention></Intervention>
         </div>
     </div>
 </template>
@@ -29,7 +27,22 @@ export default defineComponent({
     },
     methods: {
         addIntervention() {
-            console.log('interventionajoutée')
+            const requestOptions = {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    techId: 0,
+                    contratId: 0,
+                    commentaire: 'N/D',
+                    etat: 'Planifié',
+                    dateIntervention: Date.now()
+                })
+            };
+            fetch(`${this.$api}/Intervention`, requestOptions)
+                .then(response => {
+                    if (response.ok) { alert("L'intervention a bien été créee") }
+                    else { alert("L'intervention n'a pas été créee") }
+                })
         }
     },
     components: { SideBar, Intervention, SearchBar, AddButton }

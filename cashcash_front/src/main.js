@@ -6,13 +6,20 @@ import { createStore } from 'vuex'
 const store = createStore({
   state () {
     return {
-      userConnecte: 'Assistant'
+      userConnecte: false,
+      userFonction: 'Assistant',
+      user: {}
     }
   },
   mutations: {
-    changeUserConnecte (state) {
-      this.userConnecte = state;
-    }
+    LogUser (state, user) {
+      this.userConnecte = true;
+      this.userFonction = user;
+    },
+
+    changeUserFonction (state, uF) {
+      this.userFonction = uF;
+    },
   }
 })
 

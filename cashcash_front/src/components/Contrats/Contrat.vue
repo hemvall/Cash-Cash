@@ -17,7 +17,7 @@
         </div>
         <div v-if="ContratOpen" style="margin-top: 2%;">
             <a>dateSignature</a>
-            <input class="inputForm" v-model="dateSignature" type="date" value="`{{ i.dateSignature }}`" />
+            <input class="inputForm" type="date" value="`{{ i.dateSignature }}`"/>
             <a>dateecheance</a>
             <input class="inputForm" v-model="dateecheance" type="date" />
             <a>Technicien</a>
@@ -44,6 +44,7 @@ export default defineComponent({
         return {
             Contrats: [],
             ContratOpen: false,
+            dateSignature: ''
         };
     },
     components: {},

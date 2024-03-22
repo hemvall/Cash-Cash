@@ -12,8 +12,8 @@ namespace CashCash.Models
         public int? AgenceId { get; set; }
         public string? RaisonSocial { get; set; }
         public string? NumeroSiren { get; set; }
-        public string? CodeApe { get; set; }
-        public string? AdressePostal { get; set; }
+/*        public string? CodeApe { get; set; }
+*/        public string? AdressePostal { get; set; }
         public string? NumeroTelphone { get; set; }
         public string? NumeroTelecopie { get; set; }
         public string? Email { get; set; }

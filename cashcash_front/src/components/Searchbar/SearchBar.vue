@@ -2,7 +2,7 @@
     <div class="searchBarContainer">
         <input type="search" placeholder="Que souhaitez vous rechercher ?" />
         <img class="searchIcon" alt="search icon" src="../../assets/Icons/search.svg" />
-        <a class="labelUser">Assistant - Antoine BLANQUAERT // logout</a>
+        <a class="labelUser">{{ $store.state.userFonction }} - Antoine BLANQUAERT // logout</a>
     </div>
 </template>
 

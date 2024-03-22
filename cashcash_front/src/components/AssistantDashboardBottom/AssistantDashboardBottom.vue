@@ -17,7 +17,10 @@
         
         
             <div class="Cards">
-                <a class="number">{{ interventionsTerminees.length }}</a><br>
+                <a class="number">
+                    10
+                </a><br>
+                    <!-- {{ interventionsTerminees.length }} -->
                 <a class="cardLabel">Interventions terminées</a>           
             </div>
         

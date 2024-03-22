@@ -2,14 +2,22 @@
     <div class="container">
         <div class="logo" @click="$router.push('/')"><img style="height: 200px" src="../../assets/logo.png" /></div>
         <div class="labelContainer">
-            <a class="label" @click="$router.push('/')"><img class="icon" src="../../assets/Icons/dashboard.png" />Tableau de bord</a><br><br><br>
-            <a class="label"><img class="icon" src="../../assets/Icons/clients.png" />Clients</a><br><br><br>
-            <a class="label" @click="$router.push('/techniciens')"><img class="icon" src="../../assets/Icons/technicien.png" />Techniciens</a><br><br><br>
-            <a class="label" @click="$router.push('/interventions')"><img class="icon" src="../../assets/Icons/reglages.png" />Interventions</a><br><br><br>
-            <a class="label" @click="$router.push('/Contrats')"><img class="icon" src="../../assets/Icons/contrat.png" />Contrats</a><br><br><br>
-            <a class="label"><img class="icon" src="../../assets/Icons/reglages.png" />Réglages</a><br><br><br>
+            <a class="label" @click="$router.push('/')"><img class="icon" src="../../assets/Icons/dashboard.png" />Tableau
+                de bord</a><br><br><br>
+            <div v-if="$store.state.userFonction === 'Assistant'">
+                <a class="label"><img class="icon" src="../../assets/Icons/clients.png" />Clients</a><br><br><br>
+                <a class="label" @click="$router.push('/techniciens')"><img class="icon"
+                        src="../../assets/Icons/technicien.png" />Techniciens</a><br><br><br>
+                <a class="label" @click="$router.push('/interventions')"><img class="icon"
+                        src="../../assets/Icons/reglages.png" />Interventions</a><br><br><br>
+                <a class="label" @click="$router.push('/Contrats')"><img class="icon"
+                        src="../../assets/Icons/contrat.png" />Contrats</a><br><br><br>
+                <!-- <a class="label"><img class="icon" src="../../assets/Icons/reglages.png" />Réglages</a><br><br><br> -->
+            </div>
             <!-- add Condition if user connected == technicien -->
-            <a class="label" @click="$router.push('/technicien/1/interventions')"><img class="icon" src="../../assets/Icons/reglages.png" />Mes Interventions</a><br><br><br>
+            <a v-if="$store.state.userFonction === 'Technicien'" class="label"
+                @click="$router.push('/technicien/1/interventions')"><img class="icon"
+                    src="../../assets/Icons/reglages.png" />Mes Interventions</a><br><br><br>
         </div>
     </div>
 </template>
@@ -52,10 +60,10 @@ li {
     border-radius: 20px;
 }
 
-/* .label:hover {
-    
-    background-color: #191919;
-} */
+.label:hover {
+
+    color: #787878;
+}
 
 .icon {
     height: 30px;
@@ -65,5 +73,4 @@ li {
     left: 0;
     margin: 0 2%;
     margin-right: 3%;
-}
-</style>
+}</style>

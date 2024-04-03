@@ -42,23 +42,22 @@ namespace Users.Controllers
             return exs is null ? NotFound() : exs;
         }
 
-
         [HttpPost("Authentification")]
-        public ActionResult<User> Authenticate(string mail, string password)
+        public ActionResult<User> Authenticate(User loginUser)
         {
-            if (mail == null || password == null)
+            if (loginUser == null)
             {
                 return BadRequest("Invalid login data.");
             }
 
-            User user = _cashcashContext.User.FirstOrDefault(x => x.Mail == mail);
+            User user = _cashcashContext.User.FirstOrDefault(x => x.Mail == loginUser.Mail);
 
             if (user == null)
             {
                 return NotFound("User not found.");
             }
 
-            if (BCrypt.Net.BCrypt.Verify(password, user.Password))
+            if (BCrypt.Net.BCrypt.Verify(loginUser.Password, user.Password))
             {
                 return user;
             }

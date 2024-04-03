@@ -13,7 +13,6 @@
                         <p  class="label">Mot de passe</p>
                         <input v-model="password" type="password" /><br />
                         <button @click="Authentification" class="connectButton">Connexion</button><br /><br />
-                        <a class="link" @click="openSignUp = !openSignUp">Mot de passe oublié</a>
                     </div>
                 </div>
             </div>
@@ -33,8 +32,6 @@ export default defineComponent({
             lastName: '',
             mail: '',
             password: '',
-            signupPassword: '',
-            signupMail: '',
             openSignUp: false
         };
     },
@@ -44,8 +41,8 @@ export default defineComponent({
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
-                    Mail: this.mail,
-                    Password: this.password,
+                    mail: this.mail,
+                    password: this.password,
                 })
             };
             fetch(`${this.$api}/Users/Authentification`, requestOptions)
@@ -55,10 +52,12 @@ export default defineComponent({
                         return response.json()
                     }
                     else { alert("Erreur. L'identifiant ou le mot de passe est incorrect.") }
+                    this.fetchData()
                 })
                 .then(data => {
-                    // localStorage.setItem('userMail', data.Mail)
-                    // localStorage.setItem('userId', data.id)
+                    localStorage.setItem('userName', data.username)
+                    localStorage.setItem('userMail', data.mail)
+                    localStorage.setItem('userId', data.id)
                     location.reload()
                 })
         },

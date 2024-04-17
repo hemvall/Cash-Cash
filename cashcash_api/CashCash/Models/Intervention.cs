@@ -7,11 +7,10 @@ namespace CashCash.Models
     public class Intervention
     {
         [Key]
-        public int InterventionId { get; set; }
-        public int ContratId { get; set; }
-        public int TechId { get; set; }
+        public int? NumIntervention { get; set; }
         public DateTime DateIntervention { get; set; }
-        public string? Commentaire { get; set; }
-        public string? Etat { get; set; }
+        public int? NumEmploye { get; set; }
+        public TimeOnly? HeureIntervention { get; set; }
+        public int? NumClient { get; set; }
     }
 }

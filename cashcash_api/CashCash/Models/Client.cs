@@ -7,17 +7,15 @@ namespace CashCash.Models
     public class Client
     {
         [Key]
-        public int ClientId { get; set; }
-        public int LanguageId { get; set; }
-        public int? AgenceId { get; set; }
-        public string? RaisonSocial { get; set; }
-        public string? NumeroSiren { get; set; }
-/*        public string? CodeApe { get; set; }
-*/        public string? AdressePostal { get; set; }
-        public string? NumeroTelphone { get; set; }
-        public string? NumeroTelecopie { get; set; }
-        public string? Email { get; set; }
-        public double? DistanceAgence { get; set; }
-        public double? DureeMoyDeplacement { get; set; }
+        public int? NumClient { get; set; }
+        public string? Raison_sociale { get; set; }
+        public string? NumSiren { get; set; }
+        public string? CodeApe { get; set; }
+        public string? Adresse { get; set; }
+        public string? NumTel { get; set; }
+        public string? Mail { get; set; }
+        public int? TempsDeplacement { get; set; }
+        public double? Distance { get; set; }
+        public int? NumAgence { get; set; }
     }
 }

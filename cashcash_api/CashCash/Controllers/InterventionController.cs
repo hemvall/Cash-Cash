@@ -16,17 +16,17 @@ namespace Item.Controllers
             _cashcashContext = cashcashContext;
         }
 
-        [HttpGet("{id:int}", Name = "GetInterventions")]
-        public ActionResult<Intervention> Get(int id)
+        [HttpGet("{NumIntervention:int}", Name = "GetInterventions")]
+        public ActionResult<Intervention> Get(int NumIntervention)
         {
-            var a = _cashcashContext.Intervention?.AsNoTracking().FirstOrDefault(x => x.InterventionId == id);
+            var a = _cashcashContext.intervention?.AsNoTracking().FirstOrDefault(x => x.NumIntervention == NumIntervention);
             return a is null ? NotFound() : a;
         }
 
         [HttpGet]
         public ActionResult<IEnumerable<Intervention>> Get()
         {
-            var exs = _cashcashContext.Intervention?.AsNoTracking().ToList();
+            var exs = _cashcashContext.intervention?.AsNoTracking().ToList();
             return exs is null ? NotFound() : exs;
         }
 
@@ -35,16 +35,16 @@ namespace Item.Controllers
         {
             if (ex is null) return BadRequest();
 
-            _cashcashContext.Intervention?.Add(ex);
+            _cashcashContext.intervention?.Add(ex);
             _cashcashContext.SaveChanges();
 
-            return new CreatedAtRouteResult("GetIntervention", new { id = ex.InterventionId, ex });
+            return new CreatedAtRouteResult("GetIntervention", new { NumIntervention = ex.NumIntervention, ex });
         }
 
-        [HttpPut("{id:int}")]
-        public ActionResult<Intervention> Put(int id, Intervention ex)
+        [HttpPut("{NumIntervention:int}")]
+        public ActionResult<Intervention> Put(int NumIntervention, Intervention ex)
         {
-            if (ex is null || ex.InterventionId != id) return BadRequest();
+            if (ex is null || ex.NumIntervention != NumIntervention) return BadRequest();
 
             _cashcashContext.Entry(ex).State = EntityState.Modified;
             _cashcashContext.SaveChanges();
@@ -52,14 +52,14 @@ namespace Item.Controllers
             return Ok(ex);
         }
 
-        [HttpDelete("{id:int}")]
-        public IActionResult Delete(int id)
+        [HttpDelete("{NumIntervention:int}")]
+        public IActionResult Delete(int NumIntervention)
         {
-            var a = _cashcashContext.Intervention?.FirstOrDefault(c => c.InterventionId == id);
+            var a = _cashcashContext.intervention?.FirstOrDefault(c => c.NumIntervention == NumIntervention);
 
             if (a is null) return NotFound();
 
-            _cashcashContext.Intervention?.Remove(a);
+            _cashcashContext.intervention?.Remove(a);
             _cashcashContext.SaveChanges();
 
             return Ok(a);

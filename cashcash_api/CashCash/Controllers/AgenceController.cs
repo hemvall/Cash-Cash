@@ -16,17 +16,17 @@ namespace Item.Controllers
             _cashcashContext = cashcashContext;
         }
         
-        [HttpGet("{id:int}", Name = "GetAgences")]
-        public ActionResult<Agence> Get(int id)
+        [HttpGet("{NumAgence:int}", Name = "GetAgences")]
+        public ActionResult<Agence> Get(int NumAgence)
         {
-            var a = _cashcashContext.Agence?.AsNoTracking().FirstOrDefault(x => x.AgenceId == id);
+            var a = _cashcashContext.agence?.AsNoTracking().FirstOrDefault(x => x.NumAgence == NumAgence);
             return a is null ? NotFound() : a;
         }
 
         [HttpGet]
         public ActionResult<IEnumerable<Agence>> Get()
         {
-            var exs = _cashcashContext.Agence?.AsNoTracking().ToList();
+            var exs = _cashcashContext.agence?.AsNoTracking().ToList();
             return exs is null ? NotFound() : exs;
         }
 
@@ -35,16 +35,16 @@ namespace Item.Controllers
         {
             if(ex is null) return BadRequest();
 
-            _cashcashContext.Agence?.Add(ex);
+            _cashcashContext.agence?.Add(ex);
             _cashcashContext.SaveChanges();
 
-            return new CreatedAtRouteResult("GetAgence", new { id = ex.AgenceId, ex});
+            return new CreatedAtRouteResult("GetAgence", new { NumAgence = ex.NumAgence, ex});
         }
 
-        [HttpPut("{id:int}")]
-        public ActionResult<Agence> Put(int id, Agence ex)
+        [HttpPut("{NumAgence:int}")]
+        public ActionResult<Agence> Put(int NumAgence, Agence ex)
         {
-            if(ex is null || ex.AgenceId != id) return BadRequest();
+            if(ex is null || ex.NumAgence != NumAgence) return BadRequest();
 
             _cashcashContext.Entry(ex).State = EntityState.Modified;
             _cashcashContext.SaveChanges();
@@ -52,14 +52,14 @@ namespace Item.Controllers
             return Ok(ex);
         }
 
-        [HttpDelete("{id:int}")]
-        public IActionResult Delete(int id)
+        [HttpDelete("{NumAgence:int}")]
+        public IActionResult Delete(int NumAgence)
         {
-            var a = _cashcashContext.Agence?.FirstOrDefault(c => c.AgenceId == id);
+            var a = _cashcashContext.agence?.FirstOrDefault(c => c.NumAgence == NumAgence);
 
             if(a is null) return NotFound();
 
-            _cashcashContext.Agence?.Remove(a);
+            _cashcashContext.agence?.Remove(a);
             _cashcashContext.SaveChanges();
 
             return Ok(a);

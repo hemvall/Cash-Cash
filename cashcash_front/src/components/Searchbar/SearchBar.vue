@@ -1,8 +1,9 @@
 <template>
     <div class="searchBarContainer">
         <input type="search" placeholder="Que souhaitez vous rechercher ?" />
-        <img class="searchIcon" alt="search icon" src="../../assets/Icons/search.svg" />
-        <a class="labelUser">{{ $store.state.userFonction }} - Antoine BLANQUAERT // logout</a>
+        <a class="labelUser" style="display: flex;">{{ fonction }} - {{ username }} <a @click="logout()" style="margin-left: 25px;display: flex; align-items: center;"> <img
+                    alt="logout icon" style="height: 25px;" src="../../assets/Icons/logout.svg" />
+                Se déconnecter</a></a>
     </div>
 </template>
 
@@ -11,12 +12,23 @@
 import { defineComponent } from 'vue';
 
 export default defineComponent({
-
+    created(){
+        this.fonction = localStorage.getItem('userFonction');
+        this.username = localStorage.getItem('userName');
+    },
     data() {
         return {
+            username: '',
+            fonction: '',
         };
     },
-    components: { }
+    methods: {
+        logout() {
+            localStorage.clear();
+            location.reload();
+        }
+    },
+    components: {}
 });
 </script>
 
@@ -27,7 +39,7 @@ export default defineComponent({
     box-sizing: border-box;
 
     padding: 1% 3%;
-    display:flex;
+    display: flex;
     align-items: center;
     justify-content: space-between;
 }
@@ -42,11 +54,11 @@ input {
 }
 
 .labelUser {
-    font-weight:600;
+    font-weight: 600;
 }
 
 .searchIcon {
-    position: absolute; 
+    position: absolute;
     left: 23%;
 }
 </style>

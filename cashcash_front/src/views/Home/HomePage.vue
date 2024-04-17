@@ -5,6 +5,7 @@
             <AssistantDashboardTop style="margin-left: 20%;"></AssistantDashboardTop>
         </div> -->
         <div class="wholePage">
+            <pdf />
             <SearchBar></SearchBar>
             <AssistantDashboardTop></AssistantDashboardTop>
             <AssistantDashboardBottom></AssistantDashboardBottom>
@@ -12,6 +13,7 @@
 </template>
 
 <script>
+import pdf from '../../components/pdf.vue';
 import SideBar from '../../components/Sidebar/SideBar.vue';
 import AssistantDashboardTop from '../../components/AssistantDashboardTop/AssistantDashboardTop.vue';
 import AssistantDashboardBottom from '../../components/AssistantDashboardBottom/AssistantDashboardBottom.vue';
@@ -26,7 +28,7 @@ export default defineComponent({
             user: {}
         };
     },
-    components: { SideBar, AssistantDashboardTop,AssistantDashboardBottom, SearchBar }
+    components: {pdf, SideBar, AssistantDashboardTop,AssistantDashboardBottom, SearchBar }
 });
 </script>
 

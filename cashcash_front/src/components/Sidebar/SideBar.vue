@@ -4,7 +4,7 @@
         <div class="labelContainer">
             <a class="label" @click="$router.push('/')"><img class="icon" src="../../assets/Icons/dashboard.png" />Tableau
                 de bord</a><br><br><br>
-            <div v-if="$store.state.userFonction === 'Assistant'">
+            <div v-if="fonction === 'Assistant'">
                 <a class="label"><img class="icon" src="../../assets/Icons/clients.png" />Clients</a><br><br><br>
                 <a class="label" @click="$router.push('/techniciens')"><img class="icon"
                         src="../../assets/Icons/technicien.png" />Techniciens</a><br><br><br>
@@ -15,14 +15,27 @@
                 <!-- <a class="label"><img class="icon" src="../../assets/Icons/reglages.png" />Réglages</a><br><br><br> -->
             </div>
             <!-- add Condition if user connected == technicien -->
-            <a v-if="$store.state.userFonction === 'Technicien'" class="label"
-                @click="$router.push('/technicien/1/interventions')"><img class="icon"
+            <a v-if="fonction === 'Technicien'" class="label"
+                @click="$router.push(`/technicien/${localStorage.getItem('userFonction')}/interventions`)"><img class="icon"
                     src="../../assets/Icons/reglages.png" />Mes Interventions</a><br><br><br>
         </div>
     </div>
 </template>
 
-<script></script>
+<script>
+import { defineComponent } from 'vue';
+
+export default defineComponent({
+    data() {
+        return {
+            fonction: ''
+        }
+    },
+created(){
+ this.fonction = localStorage.getItem('userFonction');
+},
+})
+</script>
 
 <style scoped>
 .container {
@@ -57,6 +70,7 @@ li {
     transition: .3s ease-in-out;
     cursor: pointer;
     display: flex;
+    align-items: center;
     border-radius: 20px;
 }
 
@@ -66,7 +80,7 @@ li {
 }
 
 .icon {
-    height: 30px;
+    height: 44px;
     position: relative;
     align-items: center;
     justify-content: center;

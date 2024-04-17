@@ -55,7 +55,8 @@ export default defineComponent({
                     this.fetchData()
                 })
                 .then(data => {
-                    localStorage.setItem('userName', data.username)
+                    localStorage.setItem('userName', data.name + ' ' + data.lastName)
+                    localStorage.setItem('userFonction', data.userType)
                     localStorage.setItem('userMail', data.mail)
                     localStorage.setItem('userId', data.id)
                     location.reload()

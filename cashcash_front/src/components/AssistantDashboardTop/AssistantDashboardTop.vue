@@ -1,7 +1,7 @@
 <template>
     <div class="dashboardTop">
 
-        <h2 class="title"> <img height="50px" style="margin-right: 1%;" src="../../assets/Icons/wave-hand.png" /><strong>Bonjour Louis, </strong></h2>
+        <h2 class="title"> <img height="50px" style="margin-right: 1%;" src="../../assets/Icons/wave-hand.png" /><strong>Bonjour {{ username }}, </strong></h2>
         <div class="layer">
             <div class="block">
                 <div class="left contentBlock"><img class="ico" src="../../assets/Icons/technicien.png" /></div>
@@ -44,11 +44,13 @@ export default defineComponent({
             interventions: [],
             techniciens: [],
             contrats: [],
+            username: ''
             // users: [],
         };
     },
     components: {},
-    created() { this.fetchData() },
+    created() { this.fetchData();;  this.username = localStorage.getItem('userName');
+},
     methods: {
         fetchData() {
             this.interventions = [];

@@ -16,17 +16,17 @@ namespace Item.Controllers
             _cashcashContext = cashcashContext;
         }
 
-        [HttpGet("{id:int}", Name = "GetClients")]
-        public ActionResult<Client> Get(int id)
+        [HttpGet("{NumClient:int}", Name = "GetClients")]
+        public ActionResult<Client> Get(int NumClient)
         {
-            var a = _cashcashContext.Client?.AsNoTracking().FirstOrDefault(x => x.ClientId == id);
+            var a = _cashcashContext.client?.AsNoTracking().FirstOrDefault(x => x.NumClient == NumClient);
             return a is null ? NotFound() : a;
         }
 
         [HttpGet]
         public ActionResult<IEnumerable<Client>> Get()
         {
-            var exs = _cashcashContext.Client?.AsNoTracking().ToList();
+            var exs = _cashcashContext.client?.AsNoTracking().ToList();
             return exs is null ? NotFound() : exs;
         }
 
@@ -35,16 +35,16 @@ namespace Item.Controllers
         {
             if (ex is null) return BadRequest();
 
-            _cashcashContext.Client?.Add(ex);
+            _cashcashContext.client?.Add(ex);
             _cashcashContext.SaveChanges();
 
-            return new CreatedAtRouteResult("GetClient", new { id = ex.ClientId, ex });
+            return new CreatedAtRouteResult("GetClient", new { NumClient = ex.NumClient, ex });
         }
 
-        [HttpPut("{id:int}")]
-        public ActionResult<Client> Put(int id, Client ex)
+        [HttpPut("{NumClient:int}")]
+        public ActionResult<Client> Put(int NumClient, Client ex)
         {
-            if (ex is null || ex.ClientId != id) return BadRequest();
+            if (ex is null || ex.NumClient != NumClient) return BadRequest();
 
             _cashcashContext.Entry(ex).State = EntityState.Modified;
             _cashcashContext.SaveChanges();
@@ -52,14 +52,14 @@ namespace Item.Controllers
             return Ok(ex);
         }
 
-        [HttpDelete("{id:int}")]
-        public IActionResult Delete(int id)
+        [HttpDelete("{NumClient:int}")]
+        public IActionResult Delete(int NumClient)
         {
-            var a = _cashcashContext.Client?.FirstOrDefault(c => c.ClientId == id);
+            var a = _cashcashContext.client?.FirstOrDefault(c => c.NumClient == NumClient);
 
             if (a is null) return NotFound();
 
-            _cashcashContext.Client?.Remove(a);
+            _cashcashContext.client?.Remove(a);
             _cashcashContext.SaveChanges();
 
             return Ok(a);

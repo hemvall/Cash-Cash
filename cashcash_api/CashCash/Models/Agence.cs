@@ -7,10 +7,9 @@ namespace CashCash.Models
     public class Agence
     {
         [Key]
-        public int AgenceId { get; set; }
-        public string? Nom { get; set; }
+        public int NumAgence { get; set; }
+        public string? NomAgence { get; set; }
         public string? Adresse { get; set; }
         public string? NumTel { get; set; }
-        public string? Mail { get; set; }
     }
 }

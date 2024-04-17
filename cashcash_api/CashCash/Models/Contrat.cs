@@ -7,9 +7,8 @@ namespace CashCash.Models
     {
         [Key]
         public int NumContrat { get; set; }
-        public int? ClientId { get; set; }
         public DateTime DateSignature { get; set; }
-        public DateTime Dateecheance{ get; set; }
-        public DateTime DateRenouvellement{ get; set; }
+        public DateTime DateFin{ get; set; }
+        public int? NumClient { get; set; }
     }
 }

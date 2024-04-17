@@ -16,17 +16,17 @@ namespace Item.Controllers
             _cashcashContext = cashcashContext;
         }
 
-        [HttpGet("{id:int}", Name = "GetContrats")]
-        public ActionResult<Contrat> Get(int id)
+        [HttpGet("{NumContrat:int}", Name = "GetContrats")]
+        public ActionResult<Contrat> Get(int NumContrat)
         {
-            var a = _cashcashContext.Contrat?.AsNoTracking().FirstOrDefault(x => x.NumContrat == id);
+            var a = _cashcashContext.contrat_de_maintenance?.AsNoTracking().FirstOrDefault(x => x.NumContrat == NumContrat);
             return a is null ? NotFound() : a;
         }
 
         [HttpGet]
         public ActionResult<IEnumerable<Contrat>> Get()
         {
-            var exs = _cashcashContext.Contrat?.AsNoTracking().ToList();
+            var exs = _cashcashContext.contrat_de_maintenance?.AsNoTracking().ToList();
             return exs is null ? NotFound() : exs;
         }
 
@@ -35,16 +35,16 @@ namespace Item.Controllers
         {
             if (ex is null) return BadRequest();
 
-            _cashcashContext.Contrat?.Add(ex);
+            _cashcashContext.contrat_de_maintenance?.Add(ex);
             _cashcashContext.SaveChanges();
 
-            return new CreatedAtRouteResult("GetContrat", new { id = ex.NumContrat, ex });
+            return new CreatedAtRouteResult("GetContrat", new { NumContrat = ex.NumContrat, ex });
         }
 
-        [HttpPut("{id:int}")]
-        public ActionResult<Contrat> Put(int id, Contrat ex)
+        [HttpPut("{NumContrat:int}")]
+        public ActionResult<Contrat> Put(int NumContrat, Contrat ex)
         {
-            if (ex is null || ex.NumContrat != id) return BadRequest();
+            if (ex is null || ex.NumContrat != NumContrat) return BadRequest();
 
             _cashcashContext.Entry(ex).State = EntityState.Modified;
             _cashcashContext.SaveChanges();
@@ -52,14 +52,14 @@ namespace Item.Controllers
             return Ok(ex);
         }
 
-        [HttpDelete("{id:int}")]
-        public IActionResult Delete(int id)
+        [HttpDelete("{NumContrat:int}")]
+        public IActionResult Delete(int NumContrat)
         {
-            var a = _cashcashContext.Contrat?.FirstOrDefault(c => c.NumContrat == id);
+            var a = _cashcashContext.contrat_de_maintenance?.FirstOrDefault(c => c.NumContrat == NumContrat);
 
             if (a is null) return NotFound();
 
-            _cashcashContext.Contrat?.Remove(a);
+            _cashcashContext.contrat_de_maintenance?.Remove(a);
             _cashcashContext.SaveChanges();
 
             return Ok(a);

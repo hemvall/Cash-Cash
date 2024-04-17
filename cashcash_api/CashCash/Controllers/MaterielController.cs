@@ -16,17 +16,17 @@ namespace Item.Controllers
             _cashcashContext = cashcashContext;
         }
 
-        [HttpGet("{id:int}", Name = "GetMateriels")]
-        public ActionResult<Materiel> Get(int id)
+        [HttpGet("{NumSerie:int}", Name = "GetMateriels")]
+        public ActionResult<Materiel> Get(int NumSerie)
         {
-            var a = _cashcashContext.Materiel?.AsNoTracking().FirstOrDefault(x => x.NumSerie == id);
+            var a = _cashcashContext.matériel?.AsNoTracking().FirstOrDefault(x => x.NumSerie == NumSerie);
             return a is null ? NotFound() : a;
         }
 
         [HttpGet]
         public ActionResult<IEnumerable<Materiel>> Get()
         {
-            var exs = _cashcashContext.Materiel?.AsNoTracking().ToList();
+            var exs = _cashcashContext.matériel?.AsNoTracking().ToList();
             return exs is null ? NotFound() : exs;
         }
 
@@ -35,16 +35,16 @@ namespace Item.Controllers
         {
             if (ex is null) return BadRequest();
 
-            _cashcashContext.Materiel?.Add(ex);
+            _cashcashContext.matériel?.Add(ex);
             _cashcashContext.SaveChanges();
 
-            return new CreatedAtRouteResult("GetMateriel", new { id = ex.NumSerie, ex });
+            return new CreatedAtRouteResult("GetMateriel", new { ex.NumSerie, ex });
         }
 
-        [HttpPut("{id:int}")]
-        public ActionResult<Materiel> Put(int id, Materiel ex)
+        [HttpPut("{NumSerie:int}")]
+        public ActionResult<Materiel> Put(int NumSerie, Materiel ex)
         {
-            if (ex is null || ex.NumSerie != id) return BadRequest();
+            if (ex is null || ex.NumSerie != NumSerie) return BadRequest();
 
             _cashcashContext.Entry(ex).State = EntityState.Modified;
             _cashcashContext.SaveChanges();
@@ -52,14 +52,14 @@ namespace Item.Controllers
             return Ok(ex);
         }
 
-        [HttpDelete("{id:int}")]
-        public IActionResult Delete(int id)
+        [HttpDelete("{NumSerie:int}")]
+        public IActionResult Delete(int NumSerie)
         {
-            var a = _cashcashContext.Materiel?.FirstOrDefault(c => c.NumSerie == id);
+            var a = _cashcashContext.matériel?.FirstOrDefault(c => c.NumSerie == NumSerie);
 
             if (a is null) return NotFound();
 
-            _cashcashContext.Materiel?.Remove(a);
+            _cashcashContext.matériel?.Remove(a);
             _cashcashContext.SaveChanges();
 
             return Ok(a);

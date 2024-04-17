@@ -16,17 +16,17 @@ namespace Item.Controllers
             _cashcashContext = cashcashContext;
         }
 
-        [HttpGet("{id:int}", Name = "GetTechniciens")]
-        public ActionResult<Technicien> Get(int id)
+        [HttpGet("{NumEmploye:int}", Name = "GetTechniciens")]
+        public ActionResult<Technicien> Get(int NumEmploye)
         {
-            var a = _cashcashContext.Technicien?.AsNoTracking().FirstOrDefault(x => x.TechId == id);
+            var a = _cashcashContext.technicien?.AsNoTracking().FirstOrDefault(x => x.NumEmploye == NumEmploye);
             return a is null ? NotFound() : a;
         }
 
         [HttpGet]
         public ActionResult<IEnumerable<Technicien>> Get()
         {
-            var exs = _cashcashContext.Technicien?.AsNoTracking().ToList();
+            var exs = _cashcashContext.technicien?.AsNoTracking().ToList();
             return exs is null ? NotFound() : exs;
         }
 
@@ -35,16 +35,16 @@ namespace Item.Controllers
         {
             if (ex is null) return BadRequest();
 
-            _cashcashContext.Technicien?.Add(ex);
+            _cashcashContext.technicien?.Add(ex);
             _cashcashContext.SaveChanges();
 
-            return new CreatedAtRouteResult("GetTechnicien", new { id = ex.TechId, ex });
+            return new CreatedAtRouteResult("GetTechnicien", new { id = ex.NumEmploye, ex });
         }
 
-        [HttpPut("{id:int}")]
-        public ActionResult<Technicien> Put(int id, Technicien ex)
+        [HttpPut("{NumEmploye:int}")]
+        public ActionResult<Technicien> Put(int NumEmploye, Technicien ex)
         {
-            if (ex is null || ex.TechId != id) return BadRequest();
+            if (ex is null || ex.NumEmploye != NumEmploye) return BadRequest();
 
             _cashcashContext.Entry(ex).State = EntityState.Modified;
             _cashcashContext.SaveChanges();
@@ -52,14 +52,14 @@ namespace Item.Controllers
             return Ok(ex);
         }
 
-        [HttpDelete("{id:int}")]
-        public IActionResult Delete(int id)
+        [HttpDelete("{NumEmploye:int}")]
+        public IActionResult Delete(int NumEmploye)
         {
-            var a = _cashcashContext.Technicien?.FirstOrDefault(c => c.TechId == id);
+            var a = _cashcashContext.technicien?.FirstOrDefault(c => c.NumEmploye == NumEmploye);
 
             if (a is null) return NotFound();
 
-            _cashcashContext.Technicien?.Remove(a);
+            _cashcashContext.technicien?.Remove(a);
             _cashcashContext.SaveChanges();
 
             return Ok(a);

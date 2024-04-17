@@ -7,12 +7,13 @@ namespace CashCash.Models
     public class Materiel
     {
         [Key]
-        public int NumSerie { get; set; }
-        public int ClientId { get; set; }
-        public string? TypeMateriel { get; set; }
-        public string? Description { get; set; }
+        public int? NumSerie { get; set; }
         public DateTime? DateVente { get; set; }
-        public DateTime? DateInstall { get; set; }
-        public int? PrixVente { get; set; }
+        public DateTime? DateInstallation { get; set; }
+        public float? PrixVente { get; set; }
+        public string? Emplacement { get; set; }
+        public int? Référence { get; set; }
+        public int? NumContrat { get; set; }
+        public int? NumClient { get; set; }
     }
 }

@@ -5,7 +5,7 @@
         <!-- <a>Lieu</a>
         <input v-model="lieu" class="inputForm" type="string" /> -->
         <a>Technicien</a>
-        <select class="inputForm" v-model="techId">
+        <select class="inputForm" v-model="NumEmploye">
             <option value="-1">---</option>
             <option v-for="t in techniciens" :key="t.id" :value="`${t.id}`">{{ t.nom }}</option>
         </select>
@@ -21,7 +21,7 @@
         <div class="intervention">
             <div class="left contentBlock">
                 <div style="display: flex; align-items: center; font-size: 15px;">
-                    <h1>{{ i.commentaire }}</h1><a class="technicienLabel" v-for="tt in techFromIntervention(i.techId)">{{ tt.nom }}</a>
+                    <h1>{{ i.commentaire }}</h1><a class="technicienLabel" v-for="tt in techFromIntervention(i.NumEmploye)">{{ tt.nom }}</a>
                 </div>
                 <p> {{ i.dateIntervention }} - 57 rue des peupliers - 15 km - Auchan</p>
             </div>
@@ -47,7 +47,7 @@ export default defineComponent({
             interventions: [],
             interventionOpen: false,
             interventionOpenId: 0,
-            techId: 1,
+            NumEmploye: 1,
             label: '',
             dateIntervention: Date
         };
@@ -76,19 +76,19 @@ export default defineComponent({
                 });
         },
         interventionsFromTechnicien(iId) {
-            return this.interventions.filter(p => p.techId == iId)
+            return this.interventions.filter(p => p.NumEmploye == iId)
         },
         techFromIntervention(iId) {
-            return this.techniciens.filter(p => p.techId == iId)
+            return this.techniciens.filter(p => p.NumEmploye == iId)
         },
         updateIntervention() {
             const requestOptions = {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
-                    interventionId: this.interventionOpenId,
-                    techId: this.techId,
-                    contratId: 1,
+                    NumIntervention: this.NumIntervention,
+                    NumEmploye: this.NumEmploye,
+                    contratId: this.NumContrat,
                     commentaire: this.label,
                     dateIntervention: this.dateIntervention
                 })

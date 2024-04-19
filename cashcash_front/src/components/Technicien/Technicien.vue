@@ -3,7 +3,9 @@
         <div class="intervention">
             <div class="left contentBlock">
                 <div style="display: flex; align-items: center; font-size: 18px;">
-                    <h1>{{ t.nom }}</h1> <p style="font-size: 22px; margin-left: 2%;">- {{ t.qualification }}</p><a class="technicienLabel" v-for="a in agencesFromTech(t.agenceId)" :key="a.id">{{a.nom}}</a>
+                    <h1 v-for="e in nameFromTech(t.numEmploye)" :key="e.nom">{{ e.nom }}</h1>
+                    <p style="font-size: 22px; margin-left: 2%;">- {{ t.qualification }}</p><a class="technicienLabel"
+                        v-for="a in agencesFromTech(t.numEmploye)" :key="a.numAgence">{{ a.nomAgence }}</a>
                 </div>
             </div>
             <div class="right contentBlock df">
@@ -32,6 +34,7 @@ export default defineComponent({
             EditOpen: false,
             techniciens: [],
             agences: [],
+            employes: [],
         };
     },
     components: {},
@@ -46,6 +49,7 @@ export default defineComponent({
                 .then(r => r.json())
                 .then(json => {
                     this.techniciens = json;
+                    console.log(this.techniciens);
                     this.loading = false;
                     return;
                 });
@@ -54,16 +58,33 @@ export default defineComponent({
                 .then(r => r.json())
                 .then(json => {
                     this.agences = json;
+                    console.log(this.agences);
                     this.loading = false;
                     return;
                 });
+            fetch(`${this.$api}/Employe`)
+
+                .then(r => r.json())
+                .then(json => {
+                    this.employes = json;
+                    console.log(this.employes);
+                    this.loading = false;
+                    return;
+                });
+
         },
-        interventionsFromTechnicien(iId) {
-            return this.interventions.filter(p => p.techId == iId)
-        },
+
         agencesFromTech(aId) {
-            return this.agences.filter(p => p.agenceId == aId)
+            let i = this.agences.filter(p => p.numAgence == aId);
+            console.log("bbbbb" + i);
+            return i;
+        },
+        nameFromTech(tId){
+            let i = this.employes.filter(p => p.numEmploye == tId);
+            console.log("employes"+i);
+            return i;
         }
+
     }
 });
 </script>

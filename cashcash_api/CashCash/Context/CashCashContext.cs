@@ -7,7 +7,9 @@ namespace cashcash_api.Context
     public class CashCashContext : DbContext
     {
         public DbSet<User>? User { get; set; }
-        public DbSet<User>? assistant { get; set; }
+        public DbSet<Assistant>? assistant { get; set; }
+
+        public DbSet<Employe>? employé { get; set; }
         public DbSet<Agence>? agence { get; set; }
         public DbSet<Client>? client { get; set; }
         public DbSet<Contrat>? contrat_de_maintenance { get; set; }

@@ -16,7 +16,7 @@ namespace Item.Controllers
             _cashcashContext = cashcashContext;
         }
 
-        [HttpGet("{NumEmploye:int}", Name = "GetTechniciens")]
+        [HttpGet("{NumEmployeTechnicien:int}", Name = "GetTechniciens")]
         public ActionResult<Technicien> Get(int NumEmploye)
         {
             var a = _cashcashContext.technicien?.AsNoTracking().FirstOrDefault(x => x.NumEmploye == NumEmploye);
@@ -41,7 +41,7 @@ namespace Item.Controllers
             return new CreatedAtRouteResult("GetTechnicien", new { id = ex.NumEmploye, ex });
         }
 
-        [HttpPut("{NumEmploye:int}")]
+        [HttpPut("{NumEmployeTechnicien:int}")]
         public ActionResult<Technicien> Put(int NumEmploye, Technicien ex)
         {
             if (ex is null || ex.NumEmploye != NumEmploye) return BadRequest();
@@ -52,7 +52,7 @@ namespace Item.Controllers
             return Ok(ex);
         }
 
-        [HttpDelete("{NumEmploye:int}")]
+        [HttpDelete("{NumEmployeTechnicien:int}")]
         public IActionResult Delete(int NumEmploye)
         {
             var a = _cashcashContext.technicien?.FirstOrDefault(c => c.NumEmploye == NumEmploye);

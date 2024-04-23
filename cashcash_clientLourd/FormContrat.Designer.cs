@@ -1,6 +1,6 @@
 ﻿namespace cashcash_clientLourd
 {
-    partial class Form2
+    partial class FormContrat
     {
         /// <summary>
         /// Required designer variable.
@@ -29,39 +29,39 @@
         private void InitializeComponent()
         {
             this.lblTitle = new System.Windows.Forms.Label();
-            this.dataGridViewInterventions = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewInterventions)).BeginInit();
+            this.dataGridContrat = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridContrat)).BeginInit();
             this.SuspendLayout();
             // 
             // lblTitle
             // 
             this.lblTitle.AutoSize = true;
-            this.lblTitle.Location = new System.Drawing.Point(366, 9);
+            this.lblTitle.Location = new System.Drawing.Point(386, 18);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(82, 16);
+            this.lblTitle.Size = new System.Drawing.Size(49, 16);
             this.lblTitle.TabIndex = 0;
-            this.lblTitle.Text = "Interventions";
+            this.lblTitle.Text = "Contrat";
             // 
-            // dataGridViewInterventions
+            // dataGridContrat
             // 
-            this.dataGridViewInterventions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewInterventions.Location = new System.Drawing.Point(12, 63);
-            this.dataGridViewInterventions.Name = "dataGridViewInterventions";
-            this.dataGridViewInterventions.RowHeadersWidth = 51;
-            this.dataGridViewInterventions.RowTemplate.Height = 24;
-            this.dataGridViewInterventions.Size = new System.Drawing.Size(776, 183);
-            this.dataGridViewInterventions.TabIndex = 1;
+            this.dataGridContrat.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridContrat.Location = new System.Drawing.Point(12, 134);
+            this.dataGridContrat.Name = "dataGridContrat";
+            this.dataGridContrat.RowHeadersWidth = 51;
+            this.dataGridContrat.RowTemplate.Height = 24;
+            this.dataGridContrat.Size = new System.Drawing.Size(776, 183);
+            this.dataGridContrat.TabIndex = 2;
             // 
-            // Form2
+            // FormContrat
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.dataGridViewInterventions);
+            this.Controls.Add(this.dataGridContrat);
             this.Controls.Add(this.lblTitle);
-            this.Name = "Form2";
-            this.Text = "Form2";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewInterventions)).EndInit();
+            this.Name = "FormContrat";
+            this.Text = "FormContrat";
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridContrat)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -70,6 +70,6 @@
         #endregion
 
         private System.Windows.Forms.Label lblTitle;
-        private System.Windows.Forms.DataGridView dataGridViewInterventions;
+        private System.Windows.Forms.DataGridView dataGridContrat;
     }
 }

@@ -14,3 +14,4 @@ C:\Users\broma\Documents\CashCash\cashcash_clientLourd\bin\Debug\Newtonsoft.Json
 C:\Users\broma\Documents\CashCash\cashcash_clientLourd\bin\Debug\cashcash_libs.pdb
 C:\Users\broma\Documents\CashCash\cashcash_clientLourd\bin\Debug\Newtonsoft.Json.xml
 C:\Users\broma\Documents\CashCash\cashcash_clientLourd\obj\Debug\cashcash_clientLourd.csproj.CopyComplete
+C:\Users\broma\Documents\CashCash\cashcash_clientLourd\obj\Debug\cashcash_clientLourd.FormContrat.resources

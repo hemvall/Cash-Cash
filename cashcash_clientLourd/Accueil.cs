@@ -23,5 +23,12 @@ namespace cashcash_clientLourd
             Form2 form2 = new Form2();
             form2.Show();
         }
+
+        private void BtnPageContrat_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            FormContrat formContrat = new FormContrat();
+            formContrat.Show();
+        }
     }
 }

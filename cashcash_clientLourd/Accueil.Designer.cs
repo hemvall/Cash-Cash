@@ -29,23 +29,36 @@
         private void InitializeComponent()
         {
             this.btnPageTechniciens = new System.Windows.Forms.Button();
+            this.btnPageContrat = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnPageTechniciens
             // 
-            this.btnPageTechniciens.Location = new System.Drawing.Point(447, 118);
+            this.btnPageTechniciens.Location = new System.Drawing.Point(118, 76);
             this.btnPageTechniciens.Name = "btnPageTechniciens";
-            this.btnPageTechniciens.Size = new System.Drawing.Size(75, 23);
+            this.btnPageTechniciens.Size = new System.Drawing.Size(232, 23);
             this.btnPageTechniciens.TabIndex = 0;
-            this.btnPageTechniciens.Text = "button1";
+            this.btnPageTechniciens.Text = "page Intervention";
             this.btnPageTechniciens.UseVisualStyleBackColor = true;
             this.btnPageTechniciens.Click += new System.EventHandler(this.btnPageTechniciens_Click);
+            // 
+            // btnPageContrat
+            // 
+            this.btnPageContrat.Location = new System.Drawing.Point(118, 105);
+            this.btnPageContrat.Name = "btnPageContrat";
+            this.btnPageContrat.Size = new System.Drawing.Size(232, 23);
+            this.btnPageContrat.TabIndex = 1;
+            this.btnPageContrat.Text = "page Contrat";
+            this.btnPageContrat.UseVisualStyleBackColor = true;
+            this.btnPageContrat.UseWaitCursor = true;
+            this.btnPageContrat.Click += new System.EventHandler(this.BtnPageContrat_Click);
             // 
             // Accueil
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnPageContrat);
             this.Controls.Add(this.btnPageTechniciens);
             this.Name = "Accueil";
             this.Text = "Form1";
@@ -56,6 +69,7 @@
         #endregion
 
         private System.Windows.Forms.Button btnPageTechniciens;
+        private System.Windows.Forms.Button btnPageContrat;
     }
 }
 

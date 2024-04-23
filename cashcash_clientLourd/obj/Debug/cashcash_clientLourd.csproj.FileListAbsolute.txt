@@ -1,0 +1,16 @@
+C:\Users\broma\Documents\CashCash\cashcash_clientLourd\bin\Debug\cashcash_clientLourd.exe.config
+C:\Users\broma\Documents\CashCash\cashcash_clientLourd\bin\Debug\cashcash_clientLourd.exe
+C:\Users\broma\Documents\CashCash\cashcash_clientLourd\bin\Debug\cashcash_clientLourd.pdb
+C:\Users\broma\Documents\CashCash\cashcash_clientLourd\obj\Debug\cashcash_clientLourd.csproj.AssemblyReference.cache
+C:\Users\broma\Documents\CashCash\cashcash_clientLourd\obj\Debug\cashcash_clientLourd.Accueil.resources
+C:\Users\broma\Documents\CashCash\cashcash_clientLourd\obj\Debug\cashcash_clientLourd.Form2.resources
+C:\Users\broma\Documents\CashCash\cashcash_clientLourd\obj\Debug\cashcash_clientLourd.Properties.Resources.resources
+C:\Users\broma\Documents\CashCash\cashcash_clientLourd\obj\Debug\cashcash_clientLourd.csproj.GenerateResource.cache
+C:\Users\broma\Documents\CashCash\cashcash_clientLourd\obj\Debug\cashcash_clientLourd.csproj.CoreCompileInputs.cache
+C:\Users\broma\Documents\CashCash\cashcash_clientLourd\obj\Debug\cashcash_clientLourd.exe
+C:\Users\broma\Documents\CashCash\cashcash_clientLourd\obj\Debug\cashcash_clientLourd.pdb
+C:\Users\broma\Documents\CashCash\cashcash_clientLourd\bin\Debug\cashcash_libs.dll
+C:\Users\broma\Documents\CashCash\cashcash_clientLourd\bin\Debug\Newtonsoft.Json.dll
+C:\Users\broma\Documents\CashCash\cashcash_clientLourd\bin\Debug\cashcash_libs.pdb
+C:\Users\broma\Documents\CashCash\cashcash_clientLourd\bin\Debug\Newtonsoft.Json.xml
+C:\Users\broma\Documents\CashCash\cashcash_clientLourd\obj\Debug\cashcash_clientLourd.csproj.CopyComplete

@@ -1,10 +1,8 @@
 {
   "ExpandedNodes": [
     "",
-    "\\cashcash_api",
-    "\\cashcash_api\\CashCash",
-    "\\cashcash_api\\CashCash\\Validations"
+    "\\cashcash_clientLourd"
   ],
-  "SelectedNode": "\\cashcash_api\\CashCash.sln",
+  "SelectedNode": "\\cashcash_clientLourd\\cashcash_clientLourd.sln",
   "PreviewInSolutionExplorer": false
 }

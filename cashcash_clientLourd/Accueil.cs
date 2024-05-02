@@ -20,7 +20,7 @@ namespace cashcash_clientLourd
         private void btnPageTechniciens_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Form2 form2 = new Form2();
+            FormIntervention form2 = new FormIntervention();
             form2.Show();
         }
 
@@ -29,6 +29,13 @@ namespace cashcash_clientLourd
             this.Hide();
             FormContrat formContrat = new FormContrat();
             formContrat.Show();
+        }
+
+        private void btnPageTechniciens_Click_1(object sender, EventArgs e)
+        {
+            this.Hide();
+            FormTechnicien formTech = new FormTechnicien();
+            formTech.Show();
         }
     }
 }

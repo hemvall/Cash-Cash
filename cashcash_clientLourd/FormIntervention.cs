@@ -10,32 +10,27 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Newtonsoft.Json;
+using System.Xml.Serialization;
 using System.IO;
 using System.Xml;
 
 namespace cashcash_clientLourd
 {
-
-    public partial class FormContrat : Form
+    public partial class FormIntervention : Form
     {
-           
-        List<Materiel> listMateriels = new List<Materiel>();
-        List<Materiel> listMaterielsContrats = new List<Materiel>();
-        List<Materiel> listMaterielsWithoutContrats = new List<Materiel>();
-
-
-        public FormContrat()
+        public FormIntervention()
         {
             InitializeComponent();
-            this.Load += FormContrat_Load;
+            this.Load += FormIntervention_Load;
         }
 
-        private async void FormContrat_Load(object sender, EventArgs e)
+        private async void FormIntervention_Load(object sender, EventArgs e)
         {
             // Appeler la méthode pour charger les données depuis l'API
             await LoadDataFromApi();
         }
-        private const string apiClientUrl = "https://localhost:7000/CLient";
+
+        private const string apiUrl = "https://localhost:7000/Intervention";
         private async Task LoadDataFromApi()
         {
             try
@@ -44,7 +39,38 @@ namespace cashcash_clientLourd
                 using (var client = new HttpClient())
                 {
                     // Appeler l'API et récupérer la réponse
-                    HttpResponseMessage response = await client.GetAsync(apiClientUrl);
+                    HttpResponseMessage response = await client.GetAsync(apiUrl);
+
+                    // Vérifier si la réponse est réussie
+                    if (response.IsSuccessStatusCode)
+                    {
+                        // Lire le contenu de la réponse
+                        string responseBody = await response.Content.ReadAsStringAsync();
+                        
+                        // Convertir les données JSON en liste d'objets Intervention
+                        List<Intervention> interventions = JsonConvert.DeserializeObject<List<Intervention>>(responseBody);
+
+                        // Afficher les données dans le DataGridView
+                        dataGridViewInterventions.DataSource = interventions;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Erreur lors de la récupération des données de l'API.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erreur : " + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            try
+            {
+                // Créer un client HTTP
+                using (var client = new HttpClient())
+                {
+                    // Appeler l'API et récupérer la réponse
+                    HttpResponseMessage response = await client.GetAsync("https://localhost:7000/Client");
 
                     // Vérifier si la réponse est réussie
                     if (response.IsSuccessStatusCode)
@@ -54,9 +80,7 @@ namespace cashcash_clientLourd
 
                         // Convertir les données JSON en liste d'objets Intervention
                         List<Client> clients = JsonConvert.DeserializeObject<List<Client>>(responseBody);
-
                         // Afficher les données dans le DataGridView
-                        dataGridClient.DataSource = clients;
                     }
                     else
                     {
@@ -69,14 +93,13 @@ namespace cashcash_clientLourd
                 MessageBox.Show("Erreur : " + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            const string apiMaterielUrl = "https://localhost:7000/Materiel";
             try
             {
                 // Créer un client HTTP
                 using (var client = new HttpClient())
                 {
                     // Appeler l'API et récupérer la réponse
-                    HttpResponseMessage response = await client.GetAsync(apiMaterielUrl);
+                    HttpResponseMessage response = await client.GetAsync("https://localhost:7000/Employe");
 
                     // Vérifier si la réponse est réussie
                     if (response.IsSuccessStatusCode)
@@ -85,11 +108,17 @@ namespace cashcash_clientLourd
                         string responseBody = await response.Content.ReadAsStringAsync();
 
                         // Convertir les données JSON en liste d'objets Intervention
-                        listMateriels = JsonConvert.DeserializeObject<List<Materiel>>(responseBody);
-                        MessageBox.Show(listMateriels.ToString());
+                        List<Employe> employes = JsonConvert.DeserializeObject<List<Employe>>(responseBody);
                         // Afficher les données dans le DataGridView
-                        //dataGridClient.DataSource = materiel;
-                        
+
+                        foreach (Employe e in employes)
+                        {
+                            //lBoxEmployés.Items.Add(e.NumEmploye);*
+                            RadioButton radio = new RadioButton();
+                            radio.Text = e.NumEmploye.ToString();
+                            this.Controls.Add(radio);   
+                            radio.PointToClient(new Point(360, 250));
+                        }
                     }
                     else
                     {
@@ -102,14 +131,18 @@ namespace cashcash_clientLourd
                 MessageBox.Show("Erreur : " + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-
-
-
         }
 
-        private void btnExportXml_Click(object sender, EventArgs e)
+        private void btnHome_Click(object sender, EventArgs e)
         {
-            if (dataGridClient.SelectedRows.Count == 0)
+            Accueil accueil = new Accueil();
+            accueil.Show();
+            this.Close();
+        }
+
+        private void btnXml_click(object sender, EventArgs e)
+        {
+            if (dataGridViewInterventions.SelectedRows.Count == 0)
             {
                 MessageBox.Show("Veuillez sélectionner une ligne à enregistrer en XML.");
                 return;
@@ -119,48 +152,21 @@ namespace cashcash_clientLourd
             XmlDocument xmlDoc = new XmlDocument();
 
             // Créer l'élément racine
-            XmlElement root = xmlDoc.CreateElement("listeMateriel");
+            XmlElement root = xmlDoc.CreateElement("Data");
             xmlDoc.AppendChild(root);
 
             // Récupérer les données de la ligne sélectionnée
-            DataGridViewRow selectedRow = dataGridClient.SelectedRows[0];
-            object value = selectedRow.Cells["numClient"].Value;
-            int numClientValue = (int)value;
-            //MessageBox.Show(numClientValue.ToString());
+            DataGridViewRow selectedRow = dataGridViewInterventions.SelectedRows[0];
 
-
-            foreach(Materiel m in listMateriels)
+            // Créer un élément pour chaque colonne et ajouter les données
+            foreach (DataGridViewCell cell in selectedRow.Cells)
             {
-                MessageBox.Show(m.ToString());
-                if(m.NumContrat != null && m.NumClient == numClientValue)
-                {
-                    listMaterielsContrats.Add(m);
-                } else if (m.NumContrat == null && m.NumClient == numClientValue)
-                {
-                    listMaterielsWithoutContrats.Add(m);
-                }
+                XmlElement element = xmlDoc.CreateElement(dataGridViewInterventions.Columns[cell.ColumnIndex].Name);
+                element.InnerText = cell.Value.ToString();
+                root.AppendChild(element);
             }
 
-
-            XmlElement elementWithContrat = xmlDoc.CreateElement("sousContrat");
-            foreach(Materiel m in listMaterielsContrats)
-            {
-                elementWithContrat.InnerText = m.ToString();
-            }
-            root.AppendChild(elementWithContrat);
-
-            XmlElement elementWithoutContrat = xmlDoc.CreateElement("horsContrat");
-            root.AppendChild(elementWithoutContrat);
-            foreach (Materiel m in listMaterielsWithoutContrats)
-            {
-                elementWithoutContrat.InnerText = m.ToString();
-            }
-            root.AppendChild(elementWithoutContrat);
-            
-            
-            // listMateriels
-
-
+            // Enregistrer le fichier XML
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.Filter = "Fichiers XML (*.xml)|*.xml";
             saveFileDialog.Title = "Enregistrer en XML";
@@ -174,7 +180,7 @@ namespace cashcash_clientLourd
                 }
                 MessageBox.Show("Données enregistrées en XML avec succès.");
             }
-
         }
     }
 }
+

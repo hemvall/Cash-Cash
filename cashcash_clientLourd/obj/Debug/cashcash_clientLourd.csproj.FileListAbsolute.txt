@@ -3,7 +3,6 @@ C:\Users\broma\Documents\CashCash\cashcash_clientLourd\bin\Debug\cashcash_client
 C:\Users\broma\Documents\CashCash\cashcash_clientLourd\bin\Debug\cashcash_clientLourd.pdb
 C:\Users\broma\Documents\CashCash\cashcash_clientLourd\obj\Debug\cashcash_clientLourd.csproj.AssemblyReference.cache
 C:\Users\broma\Documents\CashCash\cashcash_clientLourd\obj\Debug\cashcash_clientLourd.Accueil.resources
-C:\Users\broma\Documents\CashCash\cashcash_clientLourd\obj\Debug\cashcash_clientLourd.Form2.resources
 C:\Users\broma\Documents\CashCash\cashcash_clientLourd\obj\Debug\cashcash_clientLourd.Properties.Resources.resources
 C:\Users\broma\Documents\CashCash\cashcash_clientLourd\obj\Debug\cashcash_clientLourd.csproj.GenerateResource.cache
 C:\Users\broma\Documents\CashCash\cashcash_clientLourd\obj\Debug\cashcash_clientLourd.csproj.CoreCompileInputs.cache
@@ -15,3 +14,5 @@ C:\Users\broma\Documents\CashCash\cashcash_clientLourd\bin\Debug\cashcash_libs.p
 C:\Users\broma\Documents\CashCash\cashcash_clientLourd\bin\Debug\Newtonsoft.Json.xml
 C:\Users\broma\Documents\CashCash\cashcash_clientLourd\obj\Debug\cashcash_clientLourd.csproj.CopyComplete
 C:\Users\broma\Documents\CashCash\cashcash_clientLourd\obj\Debug\cashcash_clientLourd.FormContrat.resources
+C:\Users\broma\Documents\CashCash\cashcash_clientLourd\obj\Debug\cashcash_clientLourd.FormIntervention.resources
+C:\Users\broma\Documents\CashCash\cashcash_clientLourd\obj\Debug\cashcash_clientLourd.FormTechnicien.resources

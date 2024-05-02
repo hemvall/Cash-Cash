@@ -29,8 +29,9 @@
         private void InitializeComponent()
         {
             this.lblTitle = new System.Windows.Forms.Label();
-            this.dataGridContrat = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridContrat)).BeginInit();
+            this.dataGridClient = new System.Windows.Forms.DataGridView();
+            this.btnExportXml = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridClient)).BeginInit();
             this.SuspendLayout();
             // 
             // lblTitle
@@ -42,26 +43,37 @@
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "Contrat";
             // 
-            // dataGridContrat
+            // dataGridClient
             // 
-            this.dataGridContrat.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridContrat.Location = new System.Drawing.Point(12, 134);
-            this.dataGridContrat.Name = "dataGridContrat";
-            this.dataGridContrat.RowHeadersWidth = 51;
-            this.dataGridContrat.RowTemplate.Height = 24;
-            this.dataGridContrat.Size = new System.Drawing.Size(776, 183);
-            this.dataGridContrat.TabIndex = 2;
+            this.dataGridClient.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridClient.Location = new System.Drawing.Point(12, 134);
+            this.dataGridClient.Name = "dataGridClient";
+            this.dataGridClient.RowHeadersWidth = 51;
+            this.dataGridClient.RowTemplate.Height = 24;
+            this.dataGridClient.Size = new System.Drawing.Size(892, 183);
+            this.dataGridClient.TabIndex = 2;
+            // 
+            // btnExportXml
+            // 
+            this.btnExportXml.Location = new System.Drawing.Point(52, 355);
+            this.btnExportXml.Name = "btnExportXml";
+            this.btnExportXml.Size = new System.Drawing.Size(75, 23);
+            this.btnExportXml.TabIndex = 3;
+            this.btnExportXml.Text = "button1";
+            this.btnExportXml.UseVisualStyleBackColor = true;
+            this.btnExportXml.Click += new System.EventHandler(this.btnExportXml_Click);
             // 
             // FormContrat
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.dataGridContrat);
+            this.ClientSize = new System.Drawing.Size(969, 450);
+            this.Controls.Add(this.btnExportXml);
+            this.Controls.Add(this.dataGridClient);
             this.Controls.Add(this.lblTitle);
             this.Name = "FormContrat";
             this.Text = "FormContrat";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridContrat)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridClient)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -70,6 +82,7 @@
         #endregion
 
         private System.Windows.Forms.Label lblTitle;
-        private System.Windows.Forms.DataGridView dataGridContrat;
+        private System.Windows.Forms.DataGridView dataGridClient;
+        private System.Windows.Forms.Button btnExportXml;
     }
 }

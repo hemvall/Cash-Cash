@@ -1,4 +1,5 @@
 ﻿using CashCash.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,24 +10,24 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Newtonsoft.Json;
 
 namespace cashcash_clientLourd
 {
-    public partial class Form2 : Form
+    public partial class FormTechnicien : Form
     {
-        public Form2()
+        public FormTechnicien()
         {
             InitializeComponent();
-            this.Load += Form2_Load;
+            this.Load += FormTechnicien_Load;
         }
 
-        private async void Form2_Load(object sender, EventArgs e)
+        private async void FormTechnicien_Load(object sender, EventArgs e)
         {
             // Appeler la méthode pour charger les données depuis l'API
+
             await LoadDataFromApi();
         }
-        private const string apiUrl = "https://localhost:7000/Intervention";
+        private const string apiUrl = "https://localhost:7000/Technicien";
         private async Task LoadDataFromApi()
         {
             try
@@ -42,12 +43,12 @@ namespace cashcash_clientLourd
                     {
                         // Lire le contenu de la réponse
                         string responseBody = await response.Content.ReadAsStringAsync();
-                        
+
                         // Convertir les données JSON en liste d'objets Intervention
-                        List<Intervention> interventions = JsonConvert.DeserializeObject<List<Intervention>>(responseBody);
+                        List<Technicien> techs = JsonConvert.DeserializeObject<List<Technicien>>(responseBody);
 
                         // Afficher les données dans le DataGridView
-                        dataGridViewInterventions.DataSource = interventions;
+                        dataGridTechniciens.DataSource = techs;
                     }
                     else
                     {
@@ -59,6 +60,13 @@ namespace cashcash_clientLourd
             {
                 MessageBox.Show("Erreur : " + ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void btnHome_Click(object sender, EventArgs e)
+        {
+            Accueil accueil = new Accueil();
+            accueil.Show();
+            this.Close();
         }
     }
 

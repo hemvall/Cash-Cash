@@ -1,41 +1,46 @@
 <template>
     <div class="ContratContainer" v-for="i in Contrats" :key="i.id">
-        <div id="app" ref="document" v-if="hidden == !true">
-            <div style="margin: 0 5%;" id="element-to-convert">
-                <h1>Cash Cash</h1>
-                <p >Entre Cash Cash et Auchan Leers,  il est convenu ce qui suit : <br><br>
+        <div v-if="hidden == true">
+            <div id="app" ref="document">
+                <div style="margin: 0 5%;" id="element-to-convert">
+                    <h1>Cash Cash</h1>
+                    <p>Entre Cash Cash et Auchan Leers, il est convenu ce qui suit : <br><br>
 
-                    Article 1 : Objet du contrat<br>
+                        Article 1 : Objet du contrat<br>
 
-                    Cash Cash s'engage à fournir des services de caisse enregistreuse au magasin ______, pendant la période allant du {{ i.dateSignature }} au {{ i.dateecheance }}.<br><br>
+                        Cash Cash s'engage à fournir des services de caisse enregistreuse au magasin ______, pendant la
+                        période allant du {{ i.dateSignature }} au {{ i.dateecheance }}.<br><br>
 
-                    Article 2 : Numéro de contrat<br>
+                        Article 2 : Numéro de contrat<br>
 
-                    Le présent contrat est identifié par le numéro {{ i.numContrat }}.<br><br>
+                        Le présent contrat est identifié par le numéro {{ i.numContrat }}.<br><br>
 
-                    Article 3 : Date de signature<br>
+                        Article 3 : Date de signature<br>
 
-                    Le contrat a été signé le {{ i.dateSignature }}.<br><br>
+                        Le contrat a été signé le {{ i.dateSignature }}.<br><br>
 
-                    Article 4 : Durée du contrat<br>
+                        Article 4 : Durée du contrat<br>
 
-                    Ce contrat entre en vigueur à la date de signature et prend fin le  {{ i.dateecheance }}.<br><br>
+                        Ce contrat entre en vigueur à la date de signature et prend fin le {{ i.dateecheance }}.<br><br>
 
-                    Article 5 : Engagement des parties
+                        Article 5 : Engagement des parties
 
-                    Cash Cash s'engage à fournir des services de caisse enregistreuse conformes aux normes convenues,
-                    tandis qu'Auchan Leers s'engage à payer les frais de service convenus selon les termes de paiement
-                    définis.<br><br>
+                        Cash Cash s'engage à fournir des services de caisse enregistreuse conformes aux normes
+                        convenues,
+                        tandis qu'Auchan Leers s'engage à payer les frais de service convenus selon les termes de
+                        paiement
+                        définis.<br><br>
 
-                    Article 6 : Numéro client<br>
+                        Article 6 : Numéro client<br>
 
-                    Fait en double exemplaire, en date du {{i.dateSignature}}.<br><br>
+                        Fait en double exemplaire, en date du {{ i.dateSignature }}.<br><br>
 
-                    Pour Cash Cash: [Signature]<br>
+                        Pour Cash Cash: [Signature]<br>
 
-                    Pour _____ : [Signature]
+                        Pour _____ : [Signature]
 
-                </p>
+                    </p>
+                </div>
             </div>
         </div>
         <div class="Contrat">

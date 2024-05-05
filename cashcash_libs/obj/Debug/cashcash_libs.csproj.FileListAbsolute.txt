@@ -4,3 +4,9 @@ C:\Users\broma\Documents\CashCash\cashcash_libs\obj\Debug\cashcash_libs.csproj.A
 C:\Users\broma\Documents\CashCash\cashcash_libs\obj\Debug\cashcash_libs.csproj.CoreCompileInputs.cache
 C:\Users\broma\Documents\CashCash\cashcash_libs\obj\Debug\cashcash_libs.dll
 C:\Users\broma\Documents\CashCash\cashcash_libs\obj\Debug\cashcash_libs.pdb
+C:\Users\Rosa\source\repos\Cash-Cash\cashcash_libs\bin\Debug\cashcash_libs.dll
+C:\Users\Rosa\source\repos\Cash-Cash\cashcash_libs\bin\Debug\cashcash_libs.pdb
+C:\Users\Rosa\source\repos\Cash-Cash\cashcash_libs\obj\Debug\cashcash_libs.csproj.AssemblyReference.cache
+C:\Users\Rosa\source\repos\Cash-Cash\cashcash_libs\obj\Debug\cashcash_libs.csproj.CoreCompileInputs.cache
+C:\Users\Rosa\source\repos\Cash-Cash\cashcash_libs\obj\Debug\cashcash_libs.dll
+C:\Users\Rosa\source\repos\Cash-Cash\cashcash_libs\obj\Debug\cashcash_libs.pdb

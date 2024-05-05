@@ -6,8 +6,6 @@
         <div style="margin-top: 2%;">
             <AddButton @click="addContrat"></AddButton>
             <Contrat></Contrat>
-            <Contrat></Contrat>
-            <Contrat></Contrat>
         </div>
     </div>
 </template>

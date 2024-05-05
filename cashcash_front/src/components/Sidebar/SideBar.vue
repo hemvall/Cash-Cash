@@ -5,7 +5,7 @@
             <a class="label" @click="$router.push('/')"><img class="icon" src="../../assets/Icons/dashboard.png" />Tableau
                 de bord</a><br><br><br>
             <div v-if="fonction === 'Assistant'">
-                <a class="label"><img class="icon" src="../../assets/Icons/clients.png" />Clients</a><br><br><br>
+                <!--<a class="label" @click="$router.push('/clients')"><img class="icon" src="../../assets/Icons/clients.png" />Clients</a><br><br><br>-->
                 <a class="label" @click="$router.push('/techniciens')"><img class="icon"
                         src="../../assets/Icons/technicien.png" />Techniciens</a><br><br><br>
                 <a class="label" @click="$router.push('/interventions')"><img class="icon"

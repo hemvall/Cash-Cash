@@ -23,6 +23,13 @@ const routes = [
     }
   },
   {
+    path: '/clients',
+    name: 'clients',
+    component: function () {
+      return import( '../views/Assistant/Clients/Client.vue')
+    }
+  },
+  {
     path: '/contrats',
     name: 'contrats',
     component: function () {

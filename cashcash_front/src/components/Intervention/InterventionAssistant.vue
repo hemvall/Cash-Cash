@@ -19,11 +19,12 @@
     </div>
     <div class="interventionContainer" v-for="i in interventions" :key="i.InterventionId">
         <div class="intervention">
-            <div class="left contentBlock">
+            <div class="left contentBlock">{{ i }}
                 <div style="display: flex; align-items: center; font-size: 15px;">
-                    <h1>{{ i.commentaire }}</h1><a class="technicienLabel" v-for="tt in techFromIntervention(i.NumEmploye)">{{ tt.nom }}</a>
+                    <h1 v-for="e in employeFromInt(i.NumEmploye)" :key="e.numEmploye">{{ e.nom }} - {{  }}</h1><a class="technicienLabel" v-for="tt in techFromIntervention(i.NumEmploye)">{{ tt.nom }}</a>
                 </div>
-                <p> {{ i.dateIntervention }} - 57 rue des peupliers - 15 km - Auchan</p>
+                <p> {{ i.dateIntervention }} - {{i.heureIntervention}}</p>
+                <p v-for="c in clientFromIntervention(i.NumClient)" :key="c.id">{{ c.raison_sociale }}</p>
             </div>
             <div class="right contentBlock df">
                 <!-- <a class="roundButton df"><img src="../../assets/Icons/download.svg" /></a> -->
@@ -45,6 +46,8 @@ export default defineComponent({
         return {
             techniciens: [],
             interventions: [],
+            clients: [],
+            employe: [],
             interventionOpen: false,
             interventionOpenId: 0,
             NumEmploye: 1,
@@ -58,6 +61,7 @@ export default defineComponent({
         fetchData() {
             this.techniciens = [];
             this.interventions = [];
+            this.employe = [];
             this.loading = true;
 
             fetch(`${this.$api}/Intervention`)
@@ -74,12 +78,32 @@ export default defineComponent({
                     this.loading = false;
                     return;
                 });
+            fetch(`${this.$api}/Employe`)
+                .then(r => r.json())
+                .then(json => {
+                    this.employe = json;
+                    this.loading = false;
+                    return;
+                });
+            fetch(`${this.$api}/Client`)
+                .then(r => r.json())
+                .then(json => {
+                    this.clients = json;
+                    this.loading = false;
+                    return;
+                });
         },
         interventionsFromTechnicien(iId) {
             return this.interventions.filter(p => p.NumEmploye == iId)
         },
         techFromIntervention(iId) {
             return this.techniciens.filter(p => p.NumEmploye == iId)
+        },
+        employeFromInt(iId) {
+            return this.employe.filter(p => p.NumEmploye == iId)
+        },
+        clientFromIntervention(iId) {
+            return this.clients.filter(p => p.NumClient == iId)
         },
         updateIntervention() {
             const requestOptions = {

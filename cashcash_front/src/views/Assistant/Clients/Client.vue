@@ -12,7 +12,6 @@
 
 <script>
 import SideBar from '../../../components/Sidebar/SideBar.vue';
-import Client from '../../../components/';
 import AddButton from '../../../components/AddButton/AddButton.vue';
 import SearchBar from '../../../components/Searchbar/SearchBar.vue';
 

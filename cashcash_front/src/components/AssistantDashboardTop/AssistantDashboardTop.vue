@@ -1,0 +1,170 @@
+<template>
+    <div class="dashboardTop">
+
+        <h2 class="title"> <img height="50px" style="margin-right: 1%;" src="../../assets/Icons/wave-hand.png" /><strong>Bonjour {{ username }}, </strong></h2>
+        <div class="layer">
+            <div class="block">
+                <div class="left contentBlock"><img class="ico" src="../../assets/Icons/technicien.png" /></div>
+                <div class="right contentBlock">
+                    <div>
+                        <h2>Techniciens</h2>
+                        <h1>{{ techniciens.length }}</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="block">
+                <div class="left contentBlock"><img class="ico" src="../../assets/Icons/assistant.webp" /></div>
+                <div class="right contentBlock">
+                    <div>
+                        <h2>Assistants</h2>
+                        <h1>0</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="block">
+                <div class="left contentBlock"><img class="ico" src="../../assets/Icons/contrat.png" /></div>
+                <div class="right contentBlock">
+                    <div>
+                        <h2>Contrats</h2>
+                        <h1>{{ contrats.length }}</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script>
+import { defineComponent } from 'vue';
+
+export default defineComponent({
+
+    data() {
+        return {
+            interventions: [],
+            techniciens: [],
+            contrats: [],
+            username: ''
+            // users: [],
+        };
+    },
+    components: {},
+    created() { this.fetchData();;  this.username = localStorage.getItem('userName');
+},
+    methods: {
+        fetchData() {
+            this.interventions = [];
+            this.techniciens = [];
+            this.contrats = [];
+            // this.users = [];
+            this.loading = true;
+
+            fetch(`${this.$api}/Technicien`)
+                .then(r => r.json())
+                .then(json => {
+                    this.techniciens = json;
+                    this.loading = false;
+                    return;
+                });
+
+            fetch(`${this.$api}/Intervention`)
+                .then(r => r.json())
+                .then(json => {
+                    this.interventions = json;
+                    this.loading = false;
+                    return;
+                });
+
+            fetch(`${this.$api}/Contrat`)
+                .then(r => r.json())
+                .then(json => {
+                    this.contrats = json;
+                    this.loading = false;
+                    return;
+                });
+
+            // fetch(`${this.$api}/users`)
+            //     .then(r => r.json())
+            //     .then(json => {
+            //         this.users = json;
+            //         this.loading = false;
+            //         return;
+            //     });
+
+        },
+        interventionsFromTechnicien(iId) {
+            return this.interventions.filter(p => p.techId == iId)
+        },
+
+    }
+});
+</script>
+
+<style scoped>
+.dashboardTop {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 2% 0 3% 0;
+    background-color: #d9d9d9;
+}
+
+.title {
+    font-size: 28px;
+    font-weight: bold;
+    margin-left: 5%;
+    color: #103941;
+    display: flex;
+    align-items: center;
+    font-family: helvetica !important;
+}
+
+.layer {
+    display: flex;
+    justify-content: space-around;
+}
+
+.block {
+    width: 28%;
+    display: flex;
+    border-radius: 15px;
+    padding: 1%;
+    background-color: #EFF0F1;
+}
+
+.ico {
+    height:125px
+}
+
+img {
+    height: 60px;
+}
+
+.left,
+.right {
+    flex: 1;
+}
+
+.left {
+    flex: 20;
+}
+
+.right {
+    flex: 80;
+}
+
+.contentBlock {
+    display: flex;
+    justify-content: center;
+    vertical-align: middle;
+    align-items: center;
+    text-align: center;
+    color: #103941;
+    font-size: 17px;
+}
+
+h1 {
+    font-size: 54px;
+}
+
+
+</style>

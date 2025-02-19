@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34221.43
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cashcash_clientLourd", "cashcash_clientLourd.csproj", "{D1AB7247-472D-445D-A5F6-02E0A5887C85}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cashcash_libs", "..\cashcash_libs\cashcash_libs.csproj", "{7AF6961A-B45D-4A6A-A595-974149CDBEBF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D1AB7247-472D-445D-A5F6-02E0A5887C85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1AB7247-472D-445D-A5F6-02E0A5887C85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1AB7247-472D-445D-A5F6-02E0A5887C85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1AB7247-472D-445D-A5F6-02E0A5887C85}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7AF6961A-B45D-4A6A-A595-974149CDBEBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AF6961A-B45D-4A6A-A595-974149CDBEBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AF6961A-B45D-4A6A-A595-974149CDBEBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AF6961A-B45D-4A6A-A595-974149CDBEBF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9C4AE887-2349-442A-9614-3F9EFBC28B7D}
+	EndGlobalSection
+EndGlobal

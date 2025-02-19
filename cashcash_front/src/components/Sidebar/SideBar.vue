@@ -1,24 +1,47 @@
 <template>
     <div class="container">
-        <div class="logo"><img style="height: 200px" src="../../assets/logo.png" /></div>
+        <div class="logo" @click="$router.push('/')"><img style="height: 200px" src="../../assets/logo.png" /></div>
         <div class="labelContainer">
-            <a class="label"><img class="icon" src="../../assets/logo.png" />Tableau de bord</a><br><br><br>
-            <a class="label"><img class="icon" src="../../assets/logo.png" />Interventions</a><br><br><br>
-            <a class="label"><img class="icon" src="../../assets/logo.png" />Contrats</a><br><br><br>
-            <a class="label"><img class="icon" src="../../assets/logo.png" />Réglages</a><br><br><br>
-            <a class="label"><img class="icon" src="../../assets/logo.png" />Techniciens</a><br><br><br>
-            <a class="label"><img class="icon" src="../../assets/logo.png" />Clients</a>
+            <a class="label" @click="$router.push('/')"><img class="icon" src="../../assets/Icons/dashboard.png" />Tableau
+                de bord</a><br><br><br>
+            <div v-if="fonction === 'Assistant'">
+                <!--<a class="label" @click="$router.push('/clients')"><img class="icon" src="../../assets/Icons/clients.png" />Clients</a><br><br><br>-->
+                <a class="label" @click="$router.push('/techniciens')"><img class="icon"
+                        src="../../assets/Icons/technicien.png" />Techniciens</a><br><br><br>
+                <a class="label" @click="$router.push('/interventions')"><img class="icon"
+                        src="../../assets/Icons/reglages.png" />Interventions</a><br><br><br>
+                <a class="label" @click="$router.push('/Contrats')"><img class="icon"
+                        src="../../assets/Icons/contrat.png" />Contrats</a><br><br><br>
+                <!-- <a class="label"><img class="icon" src="../../assets/Icons/reglages.png" />Réglages</a><br><br><br> -->
+            </div>
+            <!-- add Condition if user connected == technicien -->
+            <a v-if="fonction === 'Technicien'" class="label"
+                @click="$router.push(`/technicien/${localStorage.getItem('userFonction')}/interventions`)"><img class="icon"
+                    src="../../assets/Icons/reglages.png" />Mes Interventions</a><br><br><br>
         </div>
     </div>
 </template>
 
-<script></script>
+<script>
+import { defineComponent } from 'vue';
+
+export default defineComponent({
+    data() {
+        return {
+            fonction: ''
+        }
+    },
+created(){
+ this.fonction = localStorage.getItem('userFonction');
+},
+})
+</script>
 
 <style scoped>
 .container {
     height: 100%;
     width: 20%;
-    position: absolute;
+    position: fixed;
     top: 0;
     bottom: 0;
     left: 0;
@@ -44,23 +67,24 @@ li {
     color: white;
     font-weight: 600;
     font-size: 22px;
-    margin-top: 5%;
     transition: .3s ease-in-out;
     cursor: pointer;
-    padding: 4% 7% 4% 3%;
-    margin: 5% 0;
+    display: flex;
+    align-items: center;
     border-radius: 20px;
 }
 
 .label:hover {
-    background-color: #191919;
+
+    color: #787878;
 }
 
 .icon {
-    height: 20px;
+    height: 44px;
     position: relative;
+    align-items: center;
+    justify-content: center;
     left: 0;
     margin: 0 2%;
     margin-right: 3%;
-}
-</style>
+}</style>
